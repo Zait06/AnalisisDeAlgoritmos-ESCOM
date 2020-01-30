@@ -1178,8 +1178,8 @@ static PyObject *__pyx_f_12algoritmos00_insertSort(PyObject *__pyx_v_arr, CYTHON
   int __pyx_t_7;
   int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
-  long __pyx_t_11;
+  long __pyx_t_10;
+  int __pyx_t_11;
   __Pyx_RefNannySetupContext("insertSort", 0);
 
   /* "algoritmos00.pyx":5
@@ -1218,7 +1218,7 @@ static PyObject *__pyx_f_12algoritmos00_insertSort(PyObject *__pyx_v_arr, CYTHON
  *     cdef int i,j,aux
  *     cdef a=arr             # <<<<<<<<<<<<<<
  *     for i in range(1,len(a)):
- *         aux=a[i]
+ *         j=i-1
  */
   __Pyx_INCREF(__pyx_v_arr);
   __pyx_v_a = __pyx_v_arr;
@@ -1227,8 +1227,8 @@ static PyObject *__pyx_f_12algoritmos00_insertSort(PyObject *__pyx_v_arr, CYTHON
  *     cdef int i,j,aux
  *     cdef a=arr
  *     for i in range(1,len(a)):             # <<<<<<<<<<<<<<
- *         aux=a[i]
  *         j=i-1
+ *         while j>=0 and a[j]>a[j+1]:
  */
   __pyx_t_5 = PyObject_Length(__pyx_v_a); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 8, __pyx_L1_error)
   __pyx_t_6 = __pyx_t_5;
@@ -1238,92 +1238,93 @@ static PyObject *__pyx_f_12algoritmos00_insertSort(PyObject *__pyx_v_arr, CYTHON
     /* "algoritmos00.pyx":9
  *     cdef a=arr
  *     for i in range(1,len(a)):
- *         aux=a[i]             # <<<<<<<<<<<<<<
- *         j=i-1
- *         while j>=0 and aux<arr[j]:
- */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_v_aux = __pyx_t_8;
-
-    /* "algoritmos00.pyx":10
- *     for i in range(1,len(a)):
- *         aux=a[i]
  *         j=i-1             # <<<<<<<<<<<<<<
- *         while j>=0 and aux<arr[j]:
- *             a[j+1]=arr[j]
+ *         while j>=0 and a[j]>a[j+1]:
+ *             aux=a[j]        # swap
  */
     __pyx_v_j = (__pyx_v_i - 1);
 
-    /* "algoritmos00.pyx":11
- *         aux=a[i]
+    /* "algoritmos00.pyx":10
+ *     for i in range(1,len(a)):
  *         j=i-1
- *         while j>=0 and aux<arr[j]:             # <<<<<<<<<<<<<<
- *             a[j+1]=arr[j]
- *             j=j-1
+ *         while j>=0 and a[j]>a[j+1]:             # <<<<<<<<<<<<<<
+ *             aux=a[j]        # swap
+ *             a[j]=a[j+1]     # swap
  */
     while (1) {
-      __pyx_t_10 = ((__pyx_v_j >= 0) != 0);
-      if (__pyx_t_10) {
+      __pyx_t_9 = ((__pyx_v_j >= 0) != 0);
+      if (__pyx_t_9) {
       } else {
-        __pyx_t_9 = __pyx_t_10;
+        __pyx_t_8 = __pyx_t_9;
         goto __pyx_L7_bool_binop_done;
       }
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_aux); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_arr, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_10 = (__pyx_v_j + 1);
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_a, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_9 = __pyx_t_10;
+      __pyx_t_8 = __pyx_t_9;
       __pyx_L7_bool_binop_done:;
-      if (!__pyx_t_9) break;
+      if (!__pyx_t_8) break;
+
+      /* "algoritmos00.pyx":11
+ *         j=i-1
+ *         while j>=0 and a[j]>a[j+1]:
+ *             aux=a[j]        # swap             # <<<<<<<<<<<<<<
+ *             a[j]=a[j+1]     # swap
+ *             a[j+1]=aux      # swap
+ */
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_aux = __pyx_t_11;
 
       /* "algoritmos00.pyx":12
- *         j=i-1
- *         while j>=0 and aux<arr[j]:
- *             a[j+1]=arr[j]             # <<<<<<<<<<<<<<
+ *         while j>=0 and a[j]>a[j+1]:
+ *             aux=a[j]        # swap
+ *             a[j]=a[j+1]     # swap             # <<<<<<<<<<<<<<
+ *             a[j+1]=aux      # swap
  *             j=j-1
- *         a[j+1]=aux
  */
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_arr, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+      __pyx_t_10 = (__pyx_v_j + 1);
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_11 = (__pyx_v_j + 1);
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_a, __pyx_t_11, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 12, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_a, __pyx_v_j, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 12, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
       /* "algoritmos00.pyx":13
- *         while j>=0 and aux<arr[j]:
- *             a[j+1]=arr[j]
- *             j=j-1             # <<<<<<<<<<<<<<
- *         a[j+1]=aux
+ *             aux=a[j]        # swap
+ *             a[j]=a[j+1]     # swap
+ *             a[j+1]=aux      # swap             # <<<<<<<<<<<<<<
+ *             j=j-1
  *     cdef double tf=time.time()-ti
  */
-      __pyx_v_j = (__pyx_v_j - 1);
-    }
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_aux); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_10 = (__pyx_v_j + 1);
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_a, __pyx_t_10, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "algoritmos00.pyx":14
- *             a[j+1]=arr[j]
- *             j=j-1
- *         a[j+1]=aux             # <<<<<<<<<<<<<<
+      /* "algoritmos00.pyx":14
+ *             a[j]=a[j+1]     # swap
+ *             a[j+1]=aux      # swap
+ *             j=j-1             # <<<<<<<<<<<<<<
  *     cdef double tf=time.time()-ti
  *     return a,tf
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_aux); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_11 = (__pyx_v_j + 1);
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_a, __pyx_t_11, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 14, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_v_j = (__pyx_v_j - 1);
+    }
   }
 
   /* "algoritmos00.pyx":15
+ *             a[j+1]=aux      # swap
  *             j=j-1
- *         a[j+1]=aux
  *     cdef double tf=time.time()-ti             # <<<<<<<<<<<<<<
  *     return a,tf
  * 
@@ -1359,7 +1360,7 @@ static PyObject *__pyx_f_12algoritmos00_insertSort(PyObject *__pyx_v_arr, CYTHON
   __pyx_v_tf = __pyx_t_4;
 
   /* "algoritmos00.pyx":16
- *         a[j+1]=aux
+ *             j=j-1
  *     cdef double tf=time.time()-ti
  *     return a,tf             # <<<<<<<<<<<<<<
  * 
@@ -1555,7 +1556,7 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
  *         swapped=False
  *         for i in range(1,n):             # <<<<<<<<<<<<<<
  *             if a[i-1]>a[i]:
- *                 aux=a[i-1]
+ *                 aux=a[i-1]  # swap
  */
     __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
@@ -1617,8 +1618,8 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
  *         swapped=False
  *         for i in range(1,n):
  *             if a[i-1]>a[i]:             # <<<<<<<<<<<<<<
- *                 aux=a[i-1]
- *                 a[i-1]=a[i]
+ *                 aux=a[i-1]  # swap
+ *                 a[i-1]=a[i] # swap
  */
       __pyx_t_1 = __Pyx_PyInt_SubtractObjC(__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
@@ -1637,9 +1638,9 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
         /* "algoritmos00.pyx":28
  *         for i in range(1,n):
  *             if a[i-1]>a[i]:
- *                 aux=a[i-1]             # <<<<<<<<<<<<<<
- *                 a[i-1]=a[i]
- *                 a[i]=aux
+ *                 aux=a[i-1]  # swap             # <<<<<<<<<<<<<<
+ *                 a[i-1]=a[i] # swap
+ *                 a[i]=aux    # swap
  */
         __pyx_t_8 = __Pyx_PyInt_SubtractObjC(__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
@@ -1652,9 +1653,9 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
 
         /* "algoritmos00.pyx":29
  *             if a[i-1]>a[i]:
- *                 aux=a[i-1]
- *                 a[i-1]=a[i]             # <<<<<<<<<<<<<<
- *                 a[i]=aux
+ *                 aux=a[i-1]  # swap
+ *                 a[i-1]=a[i] # swap             # <<<<<<<<<<<<<<
+ *                 a[i]=aux    # swap
  *                 swapped=True
  */
         __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_a, __pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
@@ -1666,9 +1667,9 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
         /* "algoritmos00.pyx":30
- *                 aux=a[i-1]
- *                 a[i-1]=a[i]
- *                 a[i]=aux             # <<<<<<<<<<<<<<
+ *                 aux=a[i-1]  # swap
+ *                 a[i-1]=a[i] # swap
+ *                 a[i]=aux    # swap             # <<<<<<<<<<<<<<
  *                 swapped=True
  *         n=n-1
  */
@@ -1678,8 +1679,8 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
         /* "algoritmos00.pyx":31
- *                 a[i-1]=a[i]
- *                 a[i]=aux
+ *                 a[i-1]=a[i] # swap
+ *                 a[i]=aux    # swap
  *                 swapped=True             # <<<<<<<<<<<<<<
  *         n=n-1
  *     cdef double tf=time.time()-ti
@@ -1691,8 +1692,8 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
  *         swapped=False
  *         for i in range(1,n):
  *             if a[i-1]>a[i]:             # <<<<<<<<<<<<<<
- *                 aux=a[i-1]
- *                 a[i-1]=a[i]
+ *                 aux=a[i-1]  # swap
+ *                 a[i-1]=a[i] # swap
  */
       }
 
@@ -1701,13 +1702,13 @@ static PyObject *__pyx_f_12algoritmos00_bubbleSort(PyObject *__pyx_v_arr, CYTHON
  *         swapped=False
  *         for i in range(1,n):             # <<<<<<<<<<<<<<
  *             if a[i-1]>a[i]:
- *                 aux=a[i-1]
+ *                 aux=a[i-1]  # swap
  */
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "algoritmos00.pyx":32
- *                 a[i]=aux
+ *                 a[i]=aux    # swap
  *                 swapped=True
  *         n=n-1             # <<<<<<<<<<<<<<
  *     cdef double tf=time.time()-ti

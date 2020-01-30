@@ -6,12 +6,12 @@ cpdef insertSort(arr):
     cdef int i,j,aux
     cdef a=arr
     for i in range(1,len(a)):
-        aux=a[i] 
         j=i-1
-        while j>=0 and aux<arr[j]:
-            a[j+1]=arr[j]
+        while j>=0 and a[j]>a[j+1]:
+            aux=a[j]        # swap
+            a[j]=a[j+1]     # swap
+            a[j+1]=aux      # swap
             j=j-1
-        a[j+1]=aux
     cdef double tf=time.time()-ti
     return a,tf
 
@@ -25,9 +25,9 @@ cpdef bubbleSort(arr):
         swapped=False
         for i in range(1,n):
             if a[i-1]>a[i]:
-                aux=a[i-1]
-                a[i-1]=a[i]
-                a[i]=aux
+                aux=a[i-1]  # swap
+                a[i-1]=a[i] # swap
+                a[i]=aux    # swap
                 swapped=True
         n=n-1
     cdef double tf=time.time()-ti

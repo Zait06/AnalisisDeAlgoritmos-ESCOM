@@ -4,7 +4,7 @@ import numpy as np
 if __name__== "__main__":    
     i=1000
     while i<=10000:
-        normal=np.random.randint(1,10000,i)
+        normal=np.random.randint(1,1000,i)
         np.savetxt(str(i)+"n.txt",normal,fmt='%d')
 
         mejor=np.arange(1,i)

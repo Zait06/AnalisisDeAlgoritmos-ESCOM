@@ -7,7 +7,7 @@ if __name__== "__main__":
         normal=np.random.randint(1,1000,i)
         np.savetxt(str(i)+"n.txt",normal,fmt='%d')
 
-        mejor=np.arange(1,i)
+        mejor=np.arange(1,i+1)
         np.savetxt(str(i)+"m.txt",mejor,fmt='%d')
 
         peor=np.flip(mejor)

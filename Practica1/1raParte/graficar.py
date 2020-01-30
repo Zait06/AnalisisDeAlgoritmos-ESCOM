@@ -5,14 +5,21 @@ import matplotlib.pyplot as plt
 
 it=np.loadtxt("InsertTime.txt",dtype=float)
 bt=np.loadtxt("BubbleTime.txt",dtype=float)
+cant=it[:,0]
+datos={
+        0:it[:,1:],
+        1:bt[:,1:]
+    }
 
 fig,axes=plt.subplots(nrows=1,ncols=2)
-for ax in axes:
-    ax.plot(it[0],it[1])
-    ax.set_xlabel("Numero de variables")
+for i,ax in enumerate(axes):
+    ax.plot(cant,datos[i][:,0],label="Mejor caso")
+    ax.plot(cant,datos[i][:,1],label="Caso promedio")
+    ax.plot(cant,datos[i][:,2],label="Peor caso")
+
+    ax.set_xlabel("Cantidad de numeros")
     ax.set_ylabel("Tiempo")
 
-plt.show()
+    ax.legend()
 
-# fig.savefig("InsertSort.jpg",dpi=200)
-# fig.savefig("BubbleTime.jpg",dpi=200) 
+plt.show()

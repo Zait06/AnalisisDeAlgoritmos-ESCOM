@@ -12,6 +12,8 @@ datos={
     }
 
 fig,axes=plt.subplots(nrows=1,ncols=2)
+axes[0].set_title("Insert Sort")
+axes[1].set_title("Bubble Sort")
 for i,ax in enumerate(axes):
     ax.plot(cant,datos[i][:,0],label="Mejor caso")
     ax.plot(cant,datos[i][:,1],label="Caso promedio")
@@ -19,7 +21,6 @@ for i,ax in enumerate(axes):
 
     ax.set_xlabel("Cantidad de numeros")
     ax.set_ylabel("Tiempo")
-
     ax.legend()
 
 plt.show()

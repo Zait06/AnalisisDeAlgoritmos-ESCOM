@@ -1047,23 +1047,19 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_PY_LONG_LONG(PY_LONG_LONG value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
-/* Print.proto */
-static int __Pyx_Print(PyObject*, PyObject *, int);
-#if CYTHON_COMPILING_IN_PYPY || PY_MAJOR_VERSION >= 3
-static PyObject* __pyx_print = 0;
-static PyObject* __pyx_print_kwargs = 0;
-#endif
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE PY_LONG_LONG __Pyx_PyInt_As_PY_LONG_LONG(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
-
-/* PrintOne.proto */
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
@@ -1089,21 +1085,18 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
 /* Module declarations from 'algoritmos00' */
-static PyObject *__pyx_f_12algoritmos00_fibonacci01(int, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_fibonacci02(int, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_initArr(int, int __pyx_skip_dispatch); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_fibonacci03(int, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_12algoritmos00_fibonacci01(PY_LONG_LONG, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_12algoritmos00_fibonacci02(PY_LONG_LONG, int __pyx_skip_dispatch); /*proto*/
+static PyObject *__pyx_f_12algoritmos00_fibonacci03(PY_LONG_LONG, int __pyx_skip_dispatch); /*proto*/
 #define __Pyx_MODULE_NAME "algoritmos00"
 extern int __pyx_module_is_main_algoritmos00;
 int __pyx_module_is_main_algoritmos00 = 0;
 
 /* Implementation of 'algoritmos00' */
 static PyObject *__pyx_builtin_range;
-static const char __pyx_k_Si[] = "Si\n";
+static const char __pyx_k_i8[] = "i8";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_arr[] = "arr";
-static const char __pyx_k_end[] = "end";
-static const char __pyx_k_file[] = "file";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_ones[] = "ones";
@@ -1111,32 +1104,27 @@ static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_time[] = "time";
 static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_numpy[] = "numpy";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static PyObject *__pyx_n_s_Si;
 static PyObject *__pyx_n_s_arr;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_dtype;
-static PyObject *__pyx_n_s_end;
-static PyObject *__pyx_n_s_file;
+static PyObject *__pyx_n_s_i8;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_ones;
-static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_time;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_12algoritmos00_fibonacci01(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n); /* proto */
-static PyObject *__pyx_pf_12algoritmos00_2fibonacci02(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n); /* proto */
-static PyObject *__pyx_pf_12algoritmos00_4initArr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n); /* proto */
-static PyObject *__pyx_pf_12algoritmos00_6fibonacci03(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12algoritmos00_fibonacci01(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12algoritmos00_2fibonacci02(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n); /* proto */
+static PyObject *__pyx_pf_12algoritmos00_4fibonacci03(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_1000;
@@ -1147,13 +1135,13 @@ static PyObject *__pyx_tuple_;
 /* "algoritmos00.pyx":8
  * 
  * # Primera versin Fibonacci
- * cpdef fibonacci01(int n):             # <<<<<<<<<<<<<<
+ * cpdef fibonacci01(long long n):             # <<<<<<<<<<<<<<
  *     if n<2:
  *         return n
  */
 
 static PyObject *__pyx_pw_12algoritmos00_1fibonacci01(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_f_12algoritmos00_fibonacci01(PY_LONG_LONG __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -1164,7 +1152,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
 
   /* "algoritmos00.pyx":9
  * # Primera versin Fibonacci
- * cpdef fibonacci01(int n):
+ * cpdef fibonacci01(long long n):
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
  *     else:
@@ -1173,14 +1161,14 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
   if (__pyx_t_1) {
 
     /* "algoritmos00.pyx":10
- * cpdef fibonacci01(int n):
+ * cpdef fibonacci01(long long n):
  *     if n<2:
  *         return n             # <<<<<<<<<<<<<<
  *     else:
  *         return fibonacci01(n-1)+fibonacci01(n-2)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -1188,7 +1176,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
 
     /* "algoritmos00.pyx":9
  * # Primera versin Fibonacci
- * cpdef fibonacci01(int n):
+ * cpdef fibonacci01(long long n):
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
  *     else:
@@ -1200,7 +1188,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
  *     else:
  *         return fibonacci01(n-1)+fibonacci01(n-2)             # <<<<<<<<<<<<<<
  * 
- * cpdef fibonacci02(int n):
+ * # Segunda versin Fibonacci
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
@@ -1220,7 +1208,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
   /* "algoritmos00.pyx":8
  * 
  * # Primera versin Fibonacci
- * cpdef fibonacci01(int n):             # <<<<<<<<<<<<<<
+ * cpdef fibonacci01(long long n):             # <<<<<<<<<<<<<<
  *     if n<2:
  *         return n
  */
@@ -1241,12 +1229,12 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci01(int __pyx_v_n, CYTHON_UNUSED
 /* Python wrapper */
 static PyObject *__pyx_pw_12algoritmos00_1fibonacci01(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
 static PyObject *__pyx_pw_12algoritmos00_1fibonacci01(PyObject *__pyx_self, PyObject *__pyx_arg_n) {
-  int __pyx_v_n;
+  PY_LONG_LONG __pyx_v_n;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fibonacci01 (wrapper)", 0);
   assert(__pyx_arg_n); {
-    __pyx_v_n = __Pyx_PyInt_As_int(__pyx_arg_n); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_arg_n); if (unlikely((__pyx_v_n == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(0, 8, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1254,14 +1242,14 @@ static PyObject *__pyx_pw_12algoritmos00_1fibonacci01(PyObject *__pyx_self, PyOb
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12algoritmos00_fibonacci01(__pyx_self, ((int)__pyx_v_n));
+  __pyx_r = __pyx_pf_12algoritmos00_fibonacci01(__pyx_self, ((PY_LONG_LONG)__pyx_v_n));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12algoritmos00_fibonacci01(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {
+static PyObject *__pyx_pf_12algoritmos00_fibonacci01(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1284,16 +1272,16 @@ static PyObject *__pyx_pf_12algoritmos00_fibonacci01(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "algoritmos00.pyx":14
- *         return fibonacci01(n-1)+fibonacci01(n-2)
+/* "algoritmos00.pyx":15
  * 
- * cpdef fibonacci02(int n):             # <<<<<<<<<<<<<<
- *     cdef arreglo=np.zeros(n+1,dtype=int)
+ * # Segunda versin Fibonacci
+ * cpdef fibonacci02(long long n):             # <<<<<<<<<<<<<<
+ *     cdef arreglo=np.zeros(n+1,dtype='i8')
  *     cdef int i
  */
 
 static PyObject *__pyx_pw_12algoritmos00_3fibonacci02(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_f_12algoritmos00_fibonacci02(PY_LONG_LONG __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_v_arreglo = 0;
   int __pyx_v_i;
   PyObject *__pyx_r = NULL;
@@ -1303,35 +1291,35 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
-  long __pyx_t_6;
-  long __pyx_t_7;
+  PY_LONG_LONG __pyx_t_6;
+  PY_LONG_LONG __pyx_t_7;
   int __pyx_t_8;
   long __pyx_t_9;
   __Pyx_RefNannySetupContext("fibonacci02", 0);
 
-  /* "algoritmos00.pyx":15
- * 
- * cpdef fibonacci02(int n):
- *     cdef arreglo=np.zeros(n+1,dtype=int)             # <<<<<<<<<<<<<<
+  /* "algoritmos00.pyx":16
+ * # Segunda versin Fibonacci
+ * cpdef fibonacci02(long long n):
+ *     cdef arreglo=np.zeros(n+1,dtype='i8')             # <<<<<<<<<<<<<<
  *     cdef int i
  *     if n<2:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_n + 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_PY_LONG_LONG((__pyx_v_n + 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_n_s_i8) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -1339,8 +1327,8 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
   __pyx_v_arreglo = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "algoritmos00.pyx":17
- *     cdef arreglo=np.zeros(n+1,dtype=int)
+  /* "algoritmos00.pyx":18
+ *     cdef arreglo=np.zeros(n+1,dtype='i8')
  *     cdef int i
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
@@ -1349,7 +1337,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
   __pyx_t_5 = ((__pyx_v_n < 2) != 0);
   if (__pyx_t_5) {
 
-    /* "algoritmos00.pyx":18
+    /* "algoritmos00.pyx":19
  *     cdef int i
  *     if n<2:
  *         return n             # <<<<<<<<<<<<<<
@@ -1357,14 +1345,14 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
  *         arreglo[0]=0;
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_n); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "algoritmos00.pyx":17
- *     cdef arreglo=np.zeros(n+1,dtype=int)
+    /* "algoritmos00.pyx":18
+ *     cdef arreglo=np.zeros(n+1,dtype='i8')
  *     cdef int i
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
@@ -1372,7 +1360,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
  */
   }
 
-  /* "algoritmos00.pyx":20
+  /* "algoritmos00.pyx":21
  *         return n
  *     else:
  *         arreglo[0]=0;             # <<<<<<<<<<<<<<
@@ -1380,18 +1368,18 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
  *         for i in range(2,n+1):
  */
   /*else*/ {
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 20, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, 0, __pyx_int_0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
 
-    /* "algoritmos00.pyx":21
+    /* "algoritmos00.pyx":22
  *     else:
  *         arreglo[0]=0;
  *         arreglo[1]=1;             # <<<<<<<<<<<<<<
  *         for i in range(2,n+1):
  *             arreglo[i]=arreglo[i-1]+arreglo[i-2]
  */
-    if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, 1, __pyx_int_1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, 1, __pyx_int_1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
 
-    /* "algoritmos00.pyx":22
+    /* "algoritmos00.pyx":23
  *         arreglo[0]=0;
  *         arreglo[1]=1;
  *         for i in range(2,n+1):             # <<<<<<<<<<<<<<
@@ -1403,7 +1391,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
     for (__pyx_t_8 = 2; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "algoritmos00.pyx":23
+      /* "algoritmos00.pyx":24
  *         arreglo[1]=1;
  *         for i in range(2,n+1):
  *             arreglo[i]=arreglo[i-1]+arreglo[i-2]             # <<<<<<<<<<<<<<
@@ -1411,39 +1399,39 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
  * 
  */
       __pyx_t_9 = (__pyx_v_i - 1);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_9 = (__pyx_v_i - 2);
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, __pyx_v_i, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_v_arreglo, __pyx_v_i, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
 
-    /* "algoritmos00.pyx":24
+    /* "algoritmos00.pyx":25
  *         for i in range(2,n+1):
  *             arreglo[i]=arreglo[i-1]+arreglo[i-2]
  *         return arreglo[n]             # <<<<<<<<<<<<<<
  * 
- * cpdef initArr(int n):
+ * # Tercera versin Fibonacci
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_v_n, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_arreglo, __pyx_v_n, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
   }
 
-  /* "algoritmos00.pyx":14
- *         return fibonacci01(n-1)+fibonacci01(n-2)
+  /* "algoritmos00.pyx":15
  * 
- * cpdef fibonacci02(int n):             # <<<<<<<<<<<<<<
- *     cdef arreglo=np.zeros(n+1,dtype=int)
+ * # Segunda versin Fibonacci
+ * cpdef fibonacci02(long long n):             # <<<<<<<<<<<<<<
+ *     cdef arreglo=np.zeros(n+1,dtype='i8')
  *     cdef int i
  */
 
@@ -1465,12 +1453,12 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci02(int __pyx_v_n, CYTHON_UNUSED
 /* Python wrapper */
 static PyObject *__pyx_pw_12algoritmos00_3fibonacci02(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
 static PyObject *__pyx_pw_12algoritmos00_3fibonacci02(PyObject *__pyx_self, PyObject *__pyx_arg_n) {
-  int __pyx_v_n;
+  PY_LONG_LONG __pyx_v_n;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fibonacci02 (wrapper)", 0);
   assert(__pyx_arg_n); {
-    __pyx_v_n = __Pyx_PyInt_As_int(__pyx_arg_n); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 14, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_arg_n); if (unlikely((__pyx_v_n == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1478,20 +1466,20 @@ static PyObject *__pyx_pw_12algoritmos00_3fibonacci02(PyObject *__pyx_self, PyOb
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12algoritmos00_2fibonacci02(__pyx_self, ((int)__pyx_v_n));
+  __pyx_r = __pyx_pf_12algoritmos00_2fibonacci02(__pyx_self, ((PY_LONG_LONG)__pyx_v_n));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12algoritmos00_2fibonacci02(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {
+static PyObject *__pyx_pf_12algoritmos00_2fibonacci02(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("fibonacci02", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_12algoritmos00_fibonacci02(__pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12algoritmos00_fibonacci02(__pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1508,159 +1496,27 @@ static PyObject *__pyx_pf_12algoritmos00_2fibonacci02(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "algoritmos00.pyx":26
- *         return arreglo[n]
+/* "algoritmos00.pyx":28
  * 
- * cpdef initArr(int n):             # <<<<<<<<<<<<<<
- *     arr=(np.ones(n+1,dtype=int))*(-1)
- *     print("Si\n")
- */
-
-static PyObject *__pyx_pw_12algoritmos00_5initArr(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_initArr(int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
-  CYTHON_UNUSED PyObject *__pyx_v_arr = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  __Pyx_RefNannySetupContext("initArr", 0);
-
-  /* "algoritmos00.pyx":27
- * 
- * cpdef initArr(int n):
- *     arr=(np.ones(n+1,dtype=int))*(-1)             # <<<<<<<<<<<<<<
- *     print("Si\n")
- * 
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_n + 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
-  __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Multiply(__pyx_t_4, __pyx_int_neg_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_arr = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "algoritmos00.pyx":28
- * cpdef initArr(int n):
- *     arr=(np.ones(n+1,dtype=int))*(-1)
- *     print("Si\n")             # <<<<<<<<<<<<<<
- * 
- * cpdef fibonacci03(int n):
- */
-  if (__Pyx_PrintOne(0, __pyx_n_s_Si) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
-
-  /* "algoritmos00.pyx":26
- *         return arreglo[n]
- * 
- * cpdef initArr(int n):             # <<<<<<<<<<<<<<
- *     arr=(np.ones(n+1,dtype=int))*(-1)
- *     print("Si\n")
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("algoritmos00.initArr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = 0;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_arr);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* Python wrapper */
-static PyObject *__pyx_pw_12algoritmos00_5initArr(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_pw_12algoritmos00_5initArr(PyObject *__pyx_self, PyObject *__pyx_arg_n) {
-  int __pyx_v_n;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("initArr (wrapper)", 0);
-  assert(__pyx_arg_n); {
-    __pyx_v_n = __Pyx_PyInt_As_int(__pyx_arg_n); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 26, __pyx_L3_error)
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("algoritmos00.initArr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12algoritmos00_4initArr(__pyx_self, ((int)__pyx_v_n));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_12algoritmos00_4initArr(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("initArr", 0);
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_12algoritmos00_initArr(__pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("algoritmos00.initArr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "algoritmos00.pyx":30
- *     print("Si\n")
- * 
- * cpdef fibonacci03(int n):             # <<<<<<<<<<<<<<
+ * # Tercera versin Fibonacci
+ * cpdef fibonacci03(long long n):             # <<<<<<<<<<<<<<
  *     cdef int i
  *     if n<2:
  */
 
-static PyObject *__pyx_pw_12algoritmos00_7fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_12algoritmos00_5fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
+static PyObject *__pyx_f_12algoritmos00_fibonacci03(PY_LONG_LONG __pyx_v_n, CYTHON_UNUSED int __pyx_skip_dispatch) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
-  long __pyx_t_3;
+  PY_LONG_LONG __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("fibonacci03", 0);
 
-  /* "algoritmos00.pyx":32
- * cpdef fibonacci03(int n):
+  /* "algoritmos00.pyx":30
+ * cpdef fibonacci03(long long n):
  *     cdef int i
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
@@ -1669,7 +1525,7 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
   __pyx_t_1 = ((__pyx_v_n < 2) != 0);
   if (__pyx_t_1) {
 
-    /* "algoritmos00.pyx":33
+    /* "algoritmos00.pyx":31
  *     cdef int i
  *     if n<2:
  *         return n             # <<<<<<<<<<<<<<
@@ -1677,14 +1533,14 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
  *         arr[n-1]=fibonacci03(n-1)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_PY_LONG_LONG(__pyx_v_n); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "algoritmos00.pyx":32
- * cpdef fibonacci03(int n):
+    /* "algoritmos00.pyx":30
+ * cpdef fibonacci03(long long n):
  *     cdef int i
  *     if n<2:             # <<<<<<<<<<<<<<
  *         return n
@@ -1692,17 +1548,62 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
  */
   }
 
-  /* "algoritmos00.pyx":34
+  /* "algoritmos00.pyx":32
  *     if n<2:
  *         return n
  *     if arr[n-1]==-1:             # <<<<<<<<<<<<<<
  *         arr[n-1]=fibonacci03(n-1)
  *     if arr[n-2]==-1:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = (__pyx_v_n - 1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_neg_1, -1L, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_1) {
+
+    /* "algoritmos00.pyx":33
+ *         return n
+ *     if arr[n-1]==-1:
+ *         arr[n-1]=fibonacci03(n-1)             # <<<<<<<<<<<<<<
+ *     if arr[n-2]==-1:
+ *         arr[n-2]=fibonacci03(n-2)
+ */
+    __pyx_t_2 = __pyx_f_12algoritmos00_fibonacci03((__pyx_v_n - 1), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_arr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_3 = (__pyx_v_n - 1);
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_4, __pyx_t_3, __pyx_t_2, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1) < 0)) __PYX_ERR(0, 33, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "algoritmos00.pyx":32
+ *     if n<2:
+ *         return n
+ *     if arr[n-1]==-1:             # <<<<<<<<<<<<<<
+ *         arr[n-1]=fibonacci03(n-1)
+ *     if arr[n-2]==-1:
+ */
+  }
+
+  /* "algoritmos00.pyx":34
+ *     if arr[n-1]==-1:
+ *         arr[n-1]=fibonacci03(n-1)
+ *     if arr[n-2]==-1:             # <<<<<<<<<<<<<<
+ *         arr[n-2]=fibonacci03(n-2)
+ *     arr[n]=arr[n-1]+arr[n-2]
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = (__pyx_v_n - 2);
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_neg_1, -1L, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
@@ -1713,67 +1614,22 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
   if (__pyx_t_1) {
 
     /* "algoritmos00.pyx":35
- *         return n
- *     if arr[n-1]==-1:
- *         arr[n-1]=fibonacci03(n-1)             # <<<<<<<<<<<<<<
- *     if arr[n-2]==-1:
- *         arr[n-2]=fibonacci03(n-2)
- */
-    __pyx_t_2 = __pyx_f_12algoritmos00_fibonacci03((__pyx_v_n - 1), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_arr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = (__pyx_v_n - 1);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_4, __pyx_t_3, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 35, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-    /* "algoritmos00.pyx":34
- *     if n<2:
- *         return n
- *     if arr[n-1]==-1:             # <<<<<<<<<<<<<<
- *         arr[n-1]=fibonacci03(n-1)
- *     if arr[n-2]==-1:
- */
-  }
-
-  /* "algoritmos00.pyx":36
- *     if arr[n-1]==-1:
- *         arr[n-1]=fibonacci03(n-1)
- *     if arr[n-2]==-1:             # <<<<<<<<<<<<<<
- *         arr[n-2]=fibonacci03(n-2)
- *     arr[n]=arr[n-1]+arr[n-2]
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = (__pyx_v_n - 2);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_neg_1, -1L, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 36, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_1) {
-
-    /* "algoritmos00.pyx":37
  *         arr[n-1]=fibonacci03(n-1)
  *     if arr[n-2]==-1:
  *         arr[n-2]=fibonacci03(n-2)             # <<<<<<<<<<<<<<
  *     arr[n]=arr[n-1]+arr[n-2]
  *     return arr[n]
  */
-    __pyx_t_2 = __pyx_f_12algoritmos00_fibonacci03((__pyx_v_n - 2), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_12algoritmos00_fibonacci03((__pyx_v_n - 2), 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_arr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_arr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = (__pyx_v_n - 2);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_4, __pyx_t_3, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 37, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_4, __pyx_t_3, __pyx_t_2, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1) < 0)) __PYX_ERR(0, 35, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "algoritmos00.pyx":36
+    /* "algoritmos00.pyx":34
  *     if arr[n-1]==-1:
  *         arr[n-1]=fibonacci03(n-1)
  *     if arr[n-2]==-1:             # <<<<<<<<<<<<<<
@@ -1782,53 +1638,53 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
  */
   }
 
-  /* "algoritmos00.pyx":38
+  /* "algoritmos00.pyx":36
  *     if arr[n-2]==-1:
  *         arr[n-2]=fibonacci03(n-2)
  *     arr[n]=arr[n-1]+arr[n-2]             # <<<<<<<<<<<<<<
  *     return arr[n]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = (__pyx_v_n - 1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = (__pyx_v_n - 2);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_3, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_arr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_arr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_n, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_n, __pyx_t_2, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1) < 0)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "algoritmos00.pyx":39
+  /* "algoritmos00.pyx":37
  *         arr[n-2]=fibonacci03(n-2)
  *     arr[n]=arr[n-1]+arr[n-2]
  *     return arr[n]             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_arr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_n, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_2, __pyx_v_n, PY_LONG_LONG, 1, __Pyx_PyInt_From_PY_LONG_LONG, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "algoritmos00.pyx":30
- *     print("Si\n")
+  /* "algoritmos00.pyx":28
  * 
- * cpdef fibonacci03(int n):             # <<<<<<<<<<<<<<
+ * # Tercera versin Fibonacci
+ * cpdef fibonacci03(long long n):             # <<<<<<<<<<<<<<
  *     cdef int i
  *     if n<2:
  */
@@ -1847,14 +1703,14 @@ static PyObject *__pyx_f_12algoritmos00_fibonacci03(int __pyx_v_n, CYTHON_UNUSED
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_12algoritmos00_7fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
-static PyObject *__pyx_pw_12algoritmos00_7fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n) {
-  int __pyx_v_n;
+static PyObject *__pyx_pw_12algoritmos00_5fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n); /*proto*/
+static PyObject *__pyx_pw_12algoritmos00_5fibonacci03(PyObject *__pyx_self, PyObject *__pyx_arg_n) {
+  PY_LONG_LONG __pyx_v_n;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("fibonacci03 (wrapper)", 0);
   assert(__pyx_arg_n); {
-    __pyx_v_n = __Pyx_PyInt_As_int(__pyx_arg_n); if (unlikely((__pyx_v_n == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L3_error)
+    __pyx_v_n = __Pyx_PyInt_As_PY_LONG_LONG(__pyx_arg_n); if (unlikely((__pyx_v_n == (PY_LONG_LONG)-1) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -1862,20 +1718,20 @@ static PyObject *__pyx_pw_12algoritmos00_7fibonacci03(PyObject *__pyx_self, PyOb
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_12algoritmos00_6fibonacci03(__pyx_self, ((int)__pyx_v_n));
+  __pyx_r = __pyx_pf_12algoritmos00_4fibonacci03(__pyx_self, ((PY_LONG_LONG)__pyx_v_n));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_12algoritmos00_6fibonacci03(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_n) {
+static PyObject *__pyx_pf_12algoritmos00_4fibonacci03(CYTHON_UNUSED PyObject *__pyx_self, PY_LONG_LONG __pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("fibonacci03", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_12algoritmos00_fibonacci03(__pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12algoritmos00_fibonacci03(__pyx_v_n, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1895,8 +1751,7 @@ static PyObject *__pyx_pf_12algoritmos00_6fibonacci03(CYTHON_UNUSED PyObject *__
 static PyMethodDef __pyx_methods[] = {
   {"fibonacci01", (PyCFunction)__pyx_pw_12algoritmos00_1fibonacci01, METH_O, 0},
   {"fibonacci02", (PyCFunction)__pyx_pw_12algoritmos00_3fibonacci02, METH_O, 0},
-  {"initArr", (PyCFunction)__pyx_pw_12algoritmos00_5initArr, METH_O, 0},
-  {"fibonacci03", (PyCFunction)__pyx_pw_12algoritmos00_7fibonacci03, METH_O, 0},
+  {"fibonacci03", (PyCFunction)__pyx_pw_12algoritmos00_5fibonacci03, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -1942,19 +1797,16 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_n_s_Si, __pyx_k_Si, sizeof(__pyx_k_Si), 0, 0, 1, 1},
   {&__pyx_n_s_arr, __pyx_k_arr, sizeof(__pyx_k_arr), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
-  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
-  {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
+  {&__pyx_n_s_i8, __pyx_k_i8, sizeof(__pyx_k_i8), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_n_s_ones, __pyx_k_ones, sizeof(__pyx_k_ones), 0, 0, 1, 1},
-  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_time, __pyx_k_time, sizeof(__pyx_k_time), 0, 0, 1, 1},
@@ -1962,7 +1814,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 23, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1975,7 +1827,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "algoritmos00.pyx":5
  * import time
  * 
- * arr=(np.ones(1000,dtype=int))*(-1)             # <<<<<<<<<<<<<<
+ * arr=(np.ones(1000,dtype='i8'))*(-1)             # <<<<<<<<<<<<<<
  * 
  * # Primera versin Fibonacci
  */
@@ -2279,7 +2131,7 @@ if (!__Pyx_RefNanny) {
  * import numpy as np
  * import time             # <<<<<<<<<<<<<<
  * 
- * arr=(np.ones(1000,dtype=int))*(-1)
+ * arr=(np.ones(1000,dtype='i8'))*(-1)
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_time, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2289,7 +2141,7 @@ if (!__Pyx_RefNanny) {
   /* "algoritmos00.pyx":5
  * import time
  * 
- * arr=(np.ones(1000,dtype=int))*(-1)             # <<<<<<<<<<<<<<
+ * arr=(np.ones(1000,dtype='i8'))*(-1)             # <<<<<<<<<<<<<<
  * 
  * # Primera versin Fibonacci
  */
@@ -2300,7 +2152,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_n_s_i8) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple_, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2996,24 +2848,24 @@ bad:
     }
 
 /* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
-    const int neg_one = (int) ((int) 0 - (int) 1), const_zero = (int) 0;
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_PY_LONG_LONG(PY_LONG_LONG value) {
+    const PY_LONG_LONG neg_one = (PY_LONG_LONG) ((PY_LONG_LONG) 0 - (PY_LONG_LONG) 1), const_zero = (PY_LONG_LONG) 0;
     const int is_unsigned = neg_one > const_zero;
     if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
+        if (sizeof(PY_LONG_LONG) < sizeof(long)) {
             return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
+        } else if (sizeof(PY_LONG_LONG) <= sizeof(unsigned long)) {
             return PyLong_FromUnsignedLong((unsigned long) value);
 #ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+        } else if (sizeof(PY_LONG_LONG) <= sizeof(unsigned PY_LONG_LONG)) {
             return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
 #endif
         }
     } else {
-        if (sizeof(int) <= sizeof(long)) {
+        if (sizeof(PY_LONG_LONG) <= sizeof(long)) {
             return PyInt_FromLong((long) value);
 #ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+        } else if (sizeof(PY_LONG_LONG) <= sizeof(PY_LONG_LONG)) {
             return PyLong_FromLongLong((PY_LONG_LONG) value);
 #endif
         }
@@ -3021,7 +2873,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
     {
         int one = 1; int little = (int)*(unsigned char *)&one;
         unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
+        return _PyLong_FromByteArray(bytes, sizeof(PY_LONG_LONG),
                                      little, !is_unsigned);
     }
 }
@@ -3057,111 +2909,225 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
     }
 }
 
-/* Print */
-#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static PyObject *__Pyx_GetStdout(void) {
-    PyObject *f = PySys_GetObject((char *)"stdout");
-    if (!f) {
-        PyErr_SetString(PyExc_RuntimeError, "lost sys.stdout");
-    }
-    return f;
-}
-static int __Pyx_Print(PyObject* f, PyObject *arg_tuple, int newline) {
-    int i;
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    for (i=0; i < PyTuple_GET_SIZE(arg_tuple); i++) {
-        PyObject* v;
-        if (PyFile_SoftSpace(f, 1)) {
-            if (PyFile_WriteString(" ", f) < 0)
-                goto error;
-        }
-        v = PyTuple_GET_ITEM(arg_tuple, i);
-        if (PyFile_WriteObject(v, f, Py_PRINT_RAW) < 0)
-            goto error;
-        if (PyString_Check(v)) {
-            char *s = PyString_AsString(v);
-            Py_ssize_t len = PyString_Size(v);
-            if (len > 0) {
-                switch (s[len-1]) {
-                    case ' ': break;
-                    case '\f': case '\r': case '\n': case '\t': case '\v':
-                        PyFile_SoftSpace(f, 0);
-                        break;
-                    default:  break;
-                }
-            }
-        }
-    }
-    if (newline) {
-        if (PyFile_WriteString("\n", f) < 0)
-            goto error;
-        PyFile_SoftSpace(f, 0);
-    }
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-}
-#else
-static int __Pyx_Print(PyObject* stream, PyObject *arg_tuple, int newline) {
-    PyObject* kwargs = 0;
-    PyObject* result = 0;
-    PyObject* end_string;
-    if (unlikely(!__pyx_print)) {
-        __pyx_print = PyObject_GetAttr(__pyx_b, __pyx_n_s_print);
-        if (!__pyx_print)
-            return -1;
-    }
-    if (stream) {
-        kwargs = PyDict_New();
-        if (unlikely(!kwargs))
-            return -1;
-        if (unlikely(PyDict_SetItem(kwargs, __pyx_n_s_file, stream) < 0))
-            goto bad;
-        if (!newline) {
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                goto bad;
-            if (PyDict_SetItem(kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                goto bad;
-            }
-            Py_DECREF(end_string);
-        }
-    } else if (!newline) {
-        if (unlikely(!__pyx_print_kwargs)) {
-            __pyx_print_kwargs = PyDict_New();
-            if (unlikely(!__pyx_print_kwargs))
-                return -1;
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                return -1;
-            if (PyDict_SetItem(__pyx_print_kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                return -1;
-            }
-            Py_DECREF(end_string);
-        }
-        kwargs = __pyx_print_kwargs;
-    }
-    result = PyObject_Call(__pyx_print, arg_tuple, kwargs);
-    if (unlikely(kwargs) && (kwargs != __pyx_print_kwargs))
-        Py_DECREF(kwargs);
-    if (!result)
-        return -1;
-    Py_DECREF(result);
-    return 0;
-bad:
-    if (kwargs != __pyx_print_kwargs)
-        Py_XDECREF(kwargs);
-    return -1;
-}
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+    const int neg_one = (int) ((int) 0 - (int) 1), const_zero = (int) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
 #endif
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+    }
+}
+
+/* CIntFromPy */
+static CYTHON_INLINE PY_LONG_LONG __Pyx_PyInt_As_PY_LONG_LONG(PyObject *x) {
+    const PY_LONG_LONG neg_one = (PY_LONG_LONG) ((PY_LONG_LONG) 0 - (PY_LONG_LONG) 1), const_zero = (PY_LONG_LONG) 0;
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if (sizeof(PY_LONG_LONG) < sizeof(long)) {
+            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (PY_LONG_LONG) val;
+        }
+    } else
+#endif
+    if (likely(PyLong_Check(x))) {
+        if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (PY_LONG_LONG) 0;
+                case  1: __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, digit, digits[0])
+                case 2:
+                    if (8 * sizeof(PY_LONG_LONG) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) >= 2 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((((PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(PY_LONG_LONG) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) >= 3 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((((((PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(PY_LONG_LONG) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) >= 4 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((((((((PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0]));
+                        }
+                    }
+                    break;
+            }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+            if (unlikely(Py_SIZE(x) < 0)) {
+                goto raise_neg_overflow;
+            }
+#else
+            {
+                int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+                if (unlikely(result < 0))
+                    return (PY_LONG_LONG) -1;
+                if (unlikely(result == 1))
+                    goto raise_neg_overflow;
+            }
+#endif
+            if (sizeof(PY_LONG_LONG) <= sizeof(unsigned long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(PY_LONG_LONG, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(PY_LONG_LONG) <= sizeof(unsigned PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(PY_LONG_LONG, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+            }
+        } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+            const digit* digits = ((PyLongObject*)x)->ob_digit;
+            switch (Py_SIZE(x)) {
+                case  0: return (PY_LONG_LONG) 0;
+                case -1: __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, sdigit, (sdigit) (-(sdigit)digits[0]))
+                case  1: __PYX_VERIFY_RETURN_INT(PY_LONG_LONG,  digit, +digits[0])
+                case -2:
+                    if (8 * sizeof(PY_LONG_LONG) - 1 > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((PY_LONG_LONG)-1)*(((((PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if (8 * sizeof(PY_LONG_LONG) > 1 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 2 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) ((((((PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((PY_LONG_LONG)-1)*(((((((PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if (8 * sizeof(PY_LONG_LONG) > 2 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 3 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) ((((((((PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) (((PY_LONG_LONG)-1)*(((((((((PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if (8 * sizeof(PY_LONG_LONG) > 3 * PyLong_SHIFT) {
+                        if (8 * sizeof(unsigned long) > 4 * PyLong_SHIFT) {
+                            __PYX_VERIFY_RETURN_INT(PY_LONG_LONG, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                            return (PY_LONG_LONG) ((((((((((PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (PY_LONG_LONG)digits[0])));
+                        }
+                    }
+                    break;
+            }
+#endif
+            if (sizeof(PY_LONG_LONG) <= sizeof(long)) {
+                __PYX_VERIFY_RETURN_INT_EXC(PY_LONG_LONG, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+            } else if (sizeof(PY_LONG_LONG) <= sizeof(PY_LONG_LONG)) {
+                __PYX_VERIFY_RETURN_INT_EXC(PY_LONG_LONG, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+            }
+        }
+        {
+#if CYTHON_COMPILING_IN_PYPY && !defined(_PyLong_AsByteArray)
+            PyErr_SetString(PyExc_RuntimeError,
+                            "_PyLong_AsByteArray() not available in PyPy, cannot convert large numbers");
+#else
+            PY_LONG_LONG val;
+            PyObject *v = __Pyx_PyNumber_IntOrLong(x);
+ #if PY_MAJOR_VERSION < 3
+            if (likely(v) && !PyLong_Check(v)) {
+                PyObject *tmp = v;
+                v = PyNumber_Long(tmp);
+                Py_DECREF(tmp);
+            }
+ #endif
+            if (likely(v)) {
+                int one = 1; int is_little = (int)*(unsigned char *)&one;
+                unsigned char *bytes = (unsigned char *)&val;
+                int ret = _PyLong_AsByteArray((PyLongObject *)v,
+                                              bytes, sizeof(val),
+                                              is_little, !is_unsigned);
+                Py_DECREF(v);
+                if (likely(!ret))
+                    return val;
+            }
+#endif
+            return (PY_LONG_LONG) -1;
+        }
+    } else {
+        PY_LONG_LONG val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (PY_LONG_LONG) -1;
+        val = __Pyx_PyInt_As_PY_LONG_LONG(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to PY_LONG_LONG");
+    return (PY_LONG_LONG) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to PY_LONG_LONG");
+    return (PY_LONG_LONG) -1;
+}
 
 /* CIntFromPy */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
@@ -3351,43 +3317,6 @@ raise_neg_overflow:
         "can't convert negative value to int");
     return (int) -1;
 }
-
-/* PrintOne */
-#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static int __Pyx_PrintOne(PyObject* f, PyObject *o) {
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    if (PyFile_SoftSpace(f, 0)) {
-        if (PyFile_WriteString(" ", f) < 0)
-            goto error;
-    }
-    if (PyFile_WriteObject(o, f, Py_PRINT_RAW) < 0)
-        goto error;
-    if (PyFile_WriteString("\n", f) < 0)
-        goto error;
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-    /* the line below is just to avoid C compiler
-     * warnings about unused functions */
-    return __Pyx_Print(f, NULL, 0);
-}
-#else
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o) {
-    int res;
-    PyObject* arg_tuple = PyTuple_Pack(1, o);
-    if (unlikely(!arg_tuple))
-        return -1;
-    res = __Pyx_Print(stream, arg_tuple, 1);
-    Py_DECREF(arg_tuple);
-    return res;
-}
-#endif
 
 /* CIntFromPy */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {

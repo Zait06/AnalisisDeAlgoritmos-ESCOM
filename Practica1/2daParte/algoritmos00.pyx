@@ -2,18 +2,18 @@
 import numpy as np
 import time
 
-arr=(np.ones(1000,dtype=int))*(-1)
+arr=(np.ones(1000,dtype='i8'))*(-1)
 
 # Primera versión Fibonacci
-cpdef fibonacci01(int n):
+cpdef fibonacci01(long long n):
     if n<2:
         return n
     else:
         return fibonacci01(n-1)+fibonacci01(n-2)
 
 # Segunda versión Fibonacci
-cpdef fibonacci02(int n):
-    cdef arreglo=np.zeros(n+1,dtype=int)
+cpdef fibonacci02(long long n):
+    cdef arreglo=np.zeros(n+1,dtype='i8')
     cdef int i
     if n<2:
         return n
@@ -25,7 +25,7 @@ cpdef fibonacci02(int n):
         return arreglo[n]
 
 # Tercera versión Fibonacci
-cpdef fibonacci03(int n):
+cpdef fibonacci03(long long n):
     cdef int i
     if n<2:
         return n

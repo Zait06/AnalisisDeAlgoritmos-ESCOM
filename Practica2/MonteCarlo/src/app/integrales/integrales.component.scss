@@ -1,0 +1,35 @@
+.toolbar {
+    height: 60px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+.intsuma {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.intsuma > span {
+    display: block;
+    font-size: 70%;
+}
+.intsuma .lim-up {
+    margin-bottom: -1.0ex;
+}
+.intsuma .lim {
+    margin-top: -0.5ex;
+}
+.intsuma .sum {
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+.intsuma .sum-frac {
+    font-size: 1.5em;
+    font-weight: 100;
+}

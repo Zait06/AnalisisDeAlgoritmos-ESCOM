@@ -1,0 +1,40 @@
+<div class="toolbar" role="banner">
+    <h2>Aproximación de integrales por el método de Monte Carlo</h2>
+</div>
+<br>
+<div class="container">
+<form action="">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Integral">Seleccione la función a integrar</label>
+          <select name="indice" class="form-control" [(ngModel)]="funcionIntegral.indice">
+            <option value="1">
+                <span class="sum">&int;</span>
+                <i>(1-x^2)^(3<span class="bar">/</span>2)</i> d<i>x</i>
+            </option>
+            <option value="2">
+                f2(x)
+            </option>
+            <option value="3">f3(x)</option>
+            <option value="4">f4(x)</option>
+            <option value="5">f5(x)</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="valorA">Valor de <span>a</span></label>
+          <input type="number" class="form-control" name="valorA">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="valorB">Valor de <span>b</span></label>
+          <input type="number" class="form-control" name="valorB">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="valorN">Valor de <span>N</span></label>
+            <input type="number" class="form-control" name="valorN">
+        </div>
+    </div>
+    <button class="btn btn-dark" (click)="elegirFun()">
+      Calcular integral aproximada
+    </button>
+</form>
+</div>

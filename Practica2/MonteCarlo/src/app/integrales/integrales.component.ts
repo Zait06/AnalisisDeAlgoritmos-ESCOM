@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NumberSymbol } from '@angular/common';
+import * as math from 'mathjs';
 
 class Integrales{
   a:number;
@@ -104,6 +105,7 @@ export class IntegralesComponent implements OnInit {
   funcionIntegral:Integrales=new Integrales();
   hecho:boolean=false;
   indice:number;
+  ff:any;
   
   constructor() {
   }
@@ -111,12 +113,14 @@ export class IntegralesComponent implements OnInit {
   ngOnInit() {
   }
 
-  elegirFun(){
-    console.log(this.indice)
+  graficar(){
+    this.ff=math.range(this.funcionIntegral.a,this.funcionIntegral.b,0.1)
+    console.log(this.ff);
+  }
 
-    switch(this.indice){
+  elegirFun(){
+    switch(+this.indice){   // +data = pasa de un string a un tipo number
       case 1:
-        console.log("Si entro");
         this.funcionIntegral.aproxFun1();
         this.hecho=true;
         break;
@@ -141,5 +145,6 @@ export class IntegralesComponent implements OnInit {
         this.hecho=false;
         break;
     }
+    this.graficar();
   }
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { IntegralesComponent } from './integrales/integrales.component';
 import { FormsModule } from '@angular/forms';
 
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

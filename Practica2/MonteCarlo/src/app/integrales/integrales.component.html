@@ -47,8 +47,19 @@
       Calcular integral aproximada
     </button>
   </form>
-  <br><br>
+  <br>
   <div *ngIf="hecho">
     <h3>Aproximación de la integral: {{funcionIntegral.resultado}}</h3><br>
+    <div class="chart-wrapper">
+      <canvas baseChart 
+          [datasets]="grafica.lineChartData" 
+          [labels]="grafica.lineChartLabels" 
+          [options]="grafica.lineChartOptions"
+          [colors]="grafica.lineChartColors" 
+          [legend]="grafica.lineChartLegend" 
+          [chartType]="grafica.lineChartType" 
+          [plugins]="grafica.lineChartPlugins">
+      </canvas>
+  </div>
   </div>
 </div>

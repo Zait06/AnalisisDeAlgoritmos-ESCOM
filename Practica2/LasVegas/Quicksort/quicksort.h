@@ -1,29 +1,59 @@
+#include <iostream>
 #include <vector>
+using namespace std;
 
-// Función recursiva para hacer el ordenamiento
-vector<int> qsStatic(vector<int> arr, int ini, int fin)
-{
-    int pivote;
-    if (ini<fin) {
-        pivote=len(arr)/2;
-        // Ordeno la lista de los menores
-        qsStatic(arr,start,pivot-1);
-        // Ordeno la lista de los mayores
-        qsStatic(arr,pivot+1,end);
+int colStatic(int *v, int ini, int fin){
+    int i;
+    int pivote, valor_pivote;
+    int temp;
+    pivote = ini;
+    valor_pivote = v[pivote];
+    for (i=ini+1; i<=fin; i++){
+        if (v[i] < valor_pivote){
+            pivote++; 
+            temp=v[i];
+            v[i]=v[pivote];
+            v[pivote]=temp;
+        }
     }
-    return arr;
+    temp=v[ini];
+    v[ini]=v[pivote];
+    v[pivote]=temp;
+    return pivote;
+} 
+void qsStatic(int* v, int ini, int fin){
+    int pivote;
+    if(ini<fin){
+        pivote=colStatic(v, ini, fin);
+        qsStatic(v,ini, pivote-1);
+        qsStatic(v,pivote+1,fin);
+    } 
 }
 
-// Función recursiva para hacer el ordenamiento
-vector<int> qsRandom(vector<int> arr, int ini, int fin)
-{
-    int pivote;
-    if (ini<fin) {
-        pivote==ini+rand(fin-ini);
-        // Ordeno la lista de los menores
-        qsRandom(arr,start,pivot-1);
-        // Ordeno la lista de los mayores
-        qsRandom(arr,pivot+1,end);
+int colRandom(int *v, int ini, int fin){
+    int i;
+    int pivote, valor_pivote;
+    int temp;
+    pivote = fin+rand()%(fin+1-ini);
+    valor_pivote = v[pivote];
+    for (i=ini+1; i<=fin; i++){
+        if (v[i] < valor_pivote){
+            pivote++; 
+            temp=v[i];
+            v[i]=v[pivote];
+            v[pivote]=temp;
+        }
     }
-    return arr;
-}
+    temp=v[ini];
+    v[ini]=v[pivote];
+    v[pivote]=temp;
+    return pivote;
+} 
+void qsRandom(int* v, int ini, int fin){
+    int pivote;
+    if(ini<fin){
+        pivote=colRandom(v, ini, fin);
+        qsRandom(v,ini, pivote-1);
+        qsRandom(v,pivote+1,fin);
+    } 
+} 

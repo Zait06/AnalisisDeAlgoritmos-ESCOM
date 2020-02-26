@@ -10,33 +10,35 @@ int main(int argc, char *argv[]){
         cout<<"Valor algoritmo\n\t[1] estatico\n\t[2] aleatorio"<<endl;
         exit(0);
 	}
-    int n=strtol(argv[1],NULL,10);
+    long n=strtol(argv[1],NULL,10);
     int algo=strtol(argv[2],NULL,10);
     int arreglo[n];
     int i;
+    srand(time(NULL));
     for(i=0;i<n;i++)
-        arreglo[i]=rand();
+        arreglo[i]=rand()%1000;
 
-    for(i=0;i<n;i++)
-        cout<<arreglo[i]<<" ";
-
+    // for(i=0;i<n;i++)
+    //     cout<<arreglo[i]<<" ";
+    
     switch(algo){
         case 1:
-            qsStatic(arreglo,0,n);
+            qsStatic(arreglo,0,n-1);
             break;
         case 2:
-            qsRandom(arreglo,0,n);
+            qsRandom(arreglo,0,n-1);
             break;
         default:
-            cout<<"Algo anda mal"<<endl;
+            cout<<"Opción incorrecta"<<endl;
             exit(0);
             break;
     }
+    // cout<<endl;
 
-    cout<<endl;
+    // for(i=0;i<n;i++)
+    //     cout<<arreglo[i]<<" ";
 
-    for(i=0;i<n;i++)
-        cout<<arreglo[i]<<" ";
+    // cout<<endl;
 
     return 0;
 }

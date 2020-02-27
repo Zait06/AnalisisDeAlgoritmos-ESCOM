@@ -31,11 +31,7 @@ class GraficaLineas{        // Clase para crear gráficas
   lineChartLegend = true;   // Valor verdadero para que salgan las leyendas
   lineChartType = 'line';   // tipo de grafica
 
-  compara(a:any, b:any) {
-    return b-a;
-  }
-
-  compara2(a:any, b:any) {
+  compara(a:any, b:any) {   // Función para ordenar de menor a mayor los valores de una lista
     return a-b;
   }
 
@@ -43,12 +39,16 @@ class GraficaLineas{        // Clase para crear gráficas
     this.lineChartData[0].data=[];
     this.lineChartData[1].data=[];
     this.lineChartLabels=[];
-    for(let i=a,j=0;i<=b;i=i+0.1,j++){
+    this.lineChartData[1].data=[];
+    let i,j;
+    for(i=a,j=0;i<=b;i=i+0.1,j++){
       this.lineChartData[0].data.push(Math.pow((1-Math.pow(i,2)),(3/2)));
-      this.lineChartData[1].data.push(d[j]);
       this.lineChartLabels.push(i.toString());
     }
-    this.lineChartData[1].data.sort(this.compara);
+    let aux:Array<number>=d.slice(0,j);   // Toma una cantidad de valores que graficará
+    aux.sort(this.compara);
+    for(i=0;i<=aux.length;i++)
+      this.lineChartData[1].data.push(Math.pow((1-Math.pow(aux[i],2)),(3/2)));
     this.lineChartData[0].label="Función 1";
   }
 
@@ -56,12 +56,15 @@ class GraficaLineas{        // Clase para crear gráficas
     this.lineChartData[0].data=[];
     this.lineChartData[1].data=[];
     this.lineChartLabels=[];
-    for(let i=a,j=0;i<=b;i=i+0.1,j++){
+    let i,j;
+    for(i=a,j=0;i<=b;i=i+0.1,j++){
       this.lineChartData[0].data.push(Math.exp(i+Math.pow(i,2)));
-      this.lineChartData[1].data.push(d[j]);
       this.lineChartLabels.push(i.toString());
     }
-    this.lineChartData[1].data.sort(this.compara2);
+    let aux:Array<number>=d.slice(0,j);   // Toma una cantidad de valores que graficará
+    aux.sort(this.compara);
+    for(i=0;i<=aux.length;i++)
+      this.lineChartData[1].data.push(Math.exp(aux[i]+Math.pow(aux[i],2)));
     this.lineChartData[0].label="Función 2";
   }
 
@@ -69,12 +72,15 @@ class GraficaLineas{        // Clase para crear gráficas
     this.lineChartData[0].data=[];
     this.lineChartData[1].data=[];
     this.lineChartLabels=[];
-    for(let i=a,j=0;i<=b;i=i+0.1,j++){
+    let i,j;
+    for(i=a,j=0;i<=b;i=i+0.1,j++){
       this.lineChartData[0].data.push(Math.pow((1-Math.pow(i,2)),2));
-      this.lineChartData[1].data.push(d[j]);
       this.lineChartLabels.push(i.toString());
     }
-    this.lineChartData[1].data.sort(this.compara2);
+    let aux:Array<number>=d.slice(0,j);   // Toma una cantidad de valores que graficará
+    aux.sort(this.compara);
+    for(i=0;i<=aux.length;i++)
+      this.lineChartData[1].data.push(Math.pow((1-Math.pow(aux[i],2)),2));
     this.lineChartData[0].label="Función 3";
   }
 
@@ -82,12 +88,15 @@ class GraficaLineas{        // Clase para crear gráficas
     this.lineChartData[0].data=[];
     this.lineChartData[1].data=[];
     this.lineChartLabels=[];
-    for(let i=a,j=0;i<=b*Math.PI;i=i+0.1,j++){
+    let i,j;
+    for(i=a,j=0;i<=b*Math.PI;i=i+0.1,j++){
       this.lineChartData[0].data.push(1/(Math.cos(i)+2));
-      this.lineChartData[1].data.push(d[j]);
       this.lineChartLabels.push(i.toString());
     }
-    this.lineChartData[1].data.sort(this.compara);
+    let aux:Array<number>=d.slice(0,j);   // Toma una cantidad de valores que graficará
+    aux.sort(this.compara);
+    for(i=0;i<=aux.length;i++)
+      this.lineChartData[1].data.push(1/(Math.cos(aux[i])+2));
     this.lineChartData[0].label="Función 4";
   }
 
@@ -95,14 +104,17 @@ class GraficaLineas{        // Clase para crear gráficas
     this.lineChartData[0].data=[];
     this.lineChartData[1].data=[];
     this.lineChartLabels=[];
-    for(let i=a,j=0;i<=b;i=i+0.1,j++){
+    let i,j;
+    for(i=a,j=0;i<=b;i=i+0.1,j++){
       if(i!=0){
         this.lineChartData[0].data.push(Math.log(i));
-        this.lineChartData[1].data.push(d[j]);
         this.lineChartLabels.push(i.toString());
       }
     }
-    this.lineChartData[1].data.sort(this.compara);
+    let aux:Array<number>=d.slice(0,j);   // Toma una cantidad de valores que graficará
+    aux.sort(this.compara);
+    for(i=0;i<=aux.length;i++)
+      this.lineChartData[1].data.push(Math.log(aux[i]));
     this.lineChartData[0].label="Función 5";
   }
 }
@@ -125,7 +137,7 @@ class Integrales{
     for(i=0;i<this.n;i++){
       ui=Math.random()*(1-0)+0
       ent=this.funcion1((ui*(this.b-this.a) + this.a));
-      this.datos.push(ent);
+      this.datos.push((ui*(this.b-this.a) + this.a));
       this.suma+=ent;
     }
     this.resultado=((this.b-this.a)/this.n)*this.suma
@@ -140,7 +152,7 @@ class Integrales{
     for(i=0;i<this.n;i++){
       ui=Math.random()*(1-0)+0
       ent=this.funcion2((ui*(this.b-this.a) + this.a));
-      this.datos.push(ent)
+      this.datos.push((ui*(this.b-this.a) + this.a))
       this.suma+=ent;
     }
     this.resultado=((this.b-this.a)/this.n)*this.suma
@@ -155,14 +167,14 @@ class Integrales{
     for(i=0;i<this.n;i++){
       ui=Math.random()*(1-0)+0
       ent=this.funcion3((ui*(this.b-this.a) + this.a));
-      this.datos.push(ent)
+      this.datos.push((ui*(this.b-this.a) + this.a))
       this.suma+=ent;
     }
     this.resultado=((this.b-this.a)/this.n)*this.suma
   }
 
   funcion4(x:number){
-    return 1/(Math.cos(x*Math.PI)+2)
+    return 1/(Math.cos(x)+2)
   }
 
   aproxFun4(i:number=0,ui:number=0,ent:number=0){
@@ -170,7 +182,7 @@ class Integrales{
     for(i=0;i<this.n;i++){
       ui=Math.random()*(1-0)+0
       ent=this.funcion4((ui*(this.b-this.a) + this.a));
-      this.datos.push(ent)
+      this.datos.push((ui*(this.b-this.a) + this.a))
       this.suma+=ent;
     }
     this.resultado=((this.b-this.a)/this.n)*this.suma
@@ -184,8 +196,8 @@ class Integrales{
     ent=0; this.suma=0; this.datos=[];
     for(i=0;i<this.n;i++){
       ui=Math.random()*(1-0)+0
-      ent=this.funcion5((ui*(this.b-this.a) + this.a)*Math.PI);
-      this.datos.push(ent)
+      ent=this.funcion5((ui*(this.b-this.a) + this.a));
+      this.datos.push((ui*(this.b-this.a) + this.a))
       this.suma+=ent;
     }
     this.resultado=((this.b-this.a)/this.n)*this.suma

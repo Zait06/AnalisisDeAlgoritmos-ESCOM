@@ -25,8 +25,8 @@ int main(int argc, char *argv[]){
         
         default:
             cout<<"Opción no existente"<<endl;
-            exit(0);
             break;
     }
 
+    return 0;
 }

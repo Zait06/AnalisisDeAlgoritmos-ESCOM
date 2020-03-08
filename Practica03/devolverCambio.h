@@ -26,10 +26,7 @@ vector<int> cambioVoraz(int n, int *D, int tam){
 }
 
 long min(long a, long b){
-    if(a<b)
-        return a;
-    else
-        return b;
+    return a<b?a:b;
 }
 
 long** cambioDinamico(int n, int *D,int tam){
@@ -41,12 +38,16 @@ long** cambioDinamico(int n, int *D,int tam){
         c[i]=new long[n+1];
     }
 
-    for(i=0;i<tam+1;i++)
+    for(i=0;i<tam+1;i++)    // Primera columna con valor de cero
         c[i][0]=0;
         
-    for(i=1;i<n+1;i++)
+    for(i=1;i<n+1;i++)      // Primera fila con valores de 1 hasta n
         c[0][i]=i;
 
+    /*
+        Asignación del mejor caso a la celda dependiendo
+        el valor de la moneda y casos anteriores
+    */
     for(i=1;i<=tam;i++){
         for(j=1;j<=n;j++){
             if(j<D[i])

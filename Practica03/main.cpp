@@ -80,7 +80,19 @@ int main(int argc, char *argv[]){
                 cout<<sM[i]<<" ";
             }
             cout<<endl;
-            break;        
+            break;
+        case 4:
+            int **so;
+            so=mochilaDinamica(D,V,N,tamanio);
+            cout<<"Solución:"<<endl;            // Se muestra la matriz de soluciones
+            for(i=0;i<tamanio;i++){
+                cout<<"\t"<<flush;
+                for (j=0;j<N+1; j++){
+                    printf("%4ld ",so[i][j]);
+                }
+                cout<<endl;
+            }
+            break;
         default:
             cout<<"Opción no existente"<<endl;
             break;

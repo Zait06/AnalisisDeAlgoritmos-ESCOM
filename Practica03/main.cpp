@@ -13,7 +13,6 @@ int main(int argc, char *argv[]){
     int opc=strtol(argv[2],NULL,10);    // Algoritmo deseado por el usuario
     int N=strtol(argv[3], NULL, 10);    // Valor de N o W (dependiendo el algoritmo)
     vector<string> aux;                 // Vector para guardar los valores del conjuto a utilizar
-    long **dc;                          // Variable auxciliar para guardar la solución en una matriz
     vector<int> Sol;                    // Conjunto de soluciones
 
     if(argc!=4){
@@ -62,6 +61,7 @@ int main(int argc, char *argv[]){
             cout<<endl;
             break;
         case 2:                                 // Devolver cambio. Programación dinámica
+            long **dc;                          // Variable auxciliar para guardar la solución en una matriz
             sort(D,D+tamanio);                  // Ordena de menor a mayor al conjunto
             dc=cambioDinamico(N,D,tamanio);     // Se invoca al algoritmo
             cout<<"Solución:"<<endl;            // Se muestra la matriz de soluciones
@@ -72,6 +72,14 @@ int main(int argc, char *argv[]){
                 }
                 cout<<endl;
             }
+            break;
+        case 3:
+            int *sM;
+            sM=mochilaVoraz(D,V,N,tamanio);
+            for(i=0;i<tamanio;i++){
+                cout<<sM[i]<<" ";
+            }
+            cout<<endl;
             break;        
         default:
             cout<<"Opción no existente"<<endl;

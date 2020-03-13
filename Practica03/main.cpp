@@ -68,6 +68,7 @@ int main(int argc, char *argv[]){
             break;
         case 3:
             m00.initMochila(D,V,N,tamanio);
+            m00.impVector();
             break;
         case 4:
             m00.initMochila(D,V,N,tamanio);

@@ -1,7 +1,7 @@
-#include "devolverCambio.h"
 #include <algorithm>
-#include "mochila.h"
+#include "Mochila.h"
 #include <iostream>
+#include "Cambio.h"
 #include <fstream>
 #include <string>
 using namespace std;
@@ -51,47 +51,28 @@ int main(int argc, char *argv[]){
         }
     }
 
+    Cambio c00;                                 // Se crea un objeto de tipo Cambio
+    Mochila m00;                                // Se crea un objeto de tipo Mochila
     switch(opc){                                // Opción del programa elegido
         case 1:                                 // Devolver cambio. Algoritmo voraz
             sort(D,D+tamanio,greater<int>());   // Ordena de mayor a menor el conjunto
-            Sol=cambioVoraz(N,D,tamanio);       // Se invoca al algoritmo
-            cout<<"Monedas de: ";
-            for(i=0;i<Sol.size();i++)
-                cout<<Sol[i]<<" "<<flush;       // Muestra el conjunto de la solucion
-            cout<<endl;
+            c00.initCambio(N,D,tamanio);        // Se inicializa el objeto cambio
+            c00.cambioVoraz();                  // Se invoca al algoritmo
+            c00.impConjunto();                  // Imprime el conjunto de solución
             break;
         case 2:                                 // Devolver cambio. Programación dinámica
-            long **dc;                          // Variable auxciliar para guardar la solución en una matriz
             sort(D,D+tamanio);                  // Ordena de menor a mayor al conjunto
-            dc=cambioDinamico(N,D,tamanio);     // Se invoca al algoritmo
-            cout<<"Solución:"<<endl;            // Se muestra la matriz de soluciones
-            for(i=0;i<tamanio;i++){
-                cout<<"\t"<<D[i]<<" | ";         
-                for (j=1;j<N+1; j++){
-                    printf("%4ld ",dc[i][j]);
-                }
-                cout<<endl;
-            }
+            c00.initCambio(N,D,tamanio);        // Se inicializa el objeto cambio
+            c00.cambioDinamico();               // Se invoca al algoritmo
+            c00.impMatriz();
             break;
         case 3:
-            int *sM;
-            sM=mochilaVoraz(D,V,N,tamanio);
-            for(i=0;i<tamanio;i++){
-                cout<<sM[i]<<" ";
-            }
-            cout<<endl;
+            m00.initMochila(D,V,N,tamanio);
             break;
         case 4:
-            int **so;
-            so=mochilaDinamica(D,V,N,tamanio);
-            cout<<"Solución:"<<endl;            // Se muestra la matriz de soluciones
-            for(i=0;i<tamanio;i++){
-                cout<<"\t"<<flush;
-                for (j=0;j<N+1; j++){
-                    printf("%4ld ",so[i][j]);
-                }
-                cout<<endl;
-            }
+            m00.initMochila(D,V,N,tamanio);
+            m00.mochilaDinamica();
+            m00.impMatriz();
             break;
         default:
             cout<<"Opción no existente"<<endl;

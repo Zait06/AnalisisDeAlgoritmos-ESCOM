@@ -8,17 +8,23 @@ using namespace std;
 class Mochila{
     private:
         int **g;
-        int *w,*v;
+        int *w, *v;
         int tam, peso, W;
-        float *s;
+        float *s, *div, *vaux;
+        int *waux;
     
     public:
-        void initMochila(int *ww, int *vv,int Ww, int tam0);
+        void initMochila(int ww[], int vv[],int Ww, int tam0);
         void limpiar();
-        void impVector();
+        void impVector(float *pp);
         void impMatriz();
         void mochilaVoraz();
         void mochilaDinamica();
+        void miniPesos();
+        void maxiDivisor();
+        void maxiValores();
+        int maxVector(float *arr);
+        int minVector();
 };
 
 #endif

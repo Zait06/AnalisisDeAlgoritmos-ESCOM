@@ -22,7 +22,7 @@ void Cambio::cambioVoraz(){
                 break;
             }
         }
-        if(i>=5){           // Si esa moneda no está, sale del ciclo
+        if(i>=tam){           // Si esa moneda no está, sale del ciclo
             cout<<"No encuentro solución"<<endl;
             break;
         }else{

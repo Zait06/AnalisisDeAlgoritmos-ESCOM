@@ -7,10 +7,17 @@ using namespace std;
 
 class Cambio{
     private:
-        int n,tam;      // n = Valor del cambio a saber, tam = tamaño del conjunto de monedas
-        int *D,**c;     // D = conjunto de monedas, c = matriz de soluciones
-        vector<int> S;  // Conjunto con la solución
-    
+        /*
+            n = Valor del cambio a saber
+            tam = Tamaño del conjunto de monedas
+            D = Conjunto de monedas
+            c = Matriz de soluciones
+            S = Conjunto con la solución
+        */
+        int n,tam;
+        int *D,**c;
+        vector<int> S;
+
     public:
         void initCambio(int nn, int *DD, int tam0); // Constructor de la clase
         void cambioVoraz();                         // Algoritmo voraz

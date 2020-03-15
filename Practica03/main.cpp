@@ -9,12 +9,6 @@ using namespace std;
 int* mySplit(string linea);             // Función para dividir en dos la cadena
 
 int main(int argc, char *argv[]){
-    int i=0,j=0;                        // Variables acumulativas
-    int opc=strtol(argv[2],NULL,10);    // Algoritmo deseado por el usuario
-    int N=strtol(argv[3], NULL, 10);    // Valor de N o W (dependiendo el algoritmo)
-    vector<string> aux;                 // Vector para guardar los valores del conjuto a utilizar
-    vector<int> Sol;                    // Conjunto de soluciones
-
     if(argc!=4){
         cout<<"Forma de uso: "<<argv[0]<<" nombre_archivo.ext opcion valor_N"<<endl;
         cout<<"Donde la opcion puede tomar los siguientes valores:"<<endl;
@@ -24,6 +18,11 @@ int main(int argc, char *argv[]){
         cout<<"\t[4] Problema de la mochila con programación dinámica."<<endl;
         exit(0);
     }
+    int i=0,j=0;                        // Variables acumulativas
+    int opc=strtol(argv[2],NULL,10);    // Algoritmo deseado por el usuario
+    int N=strtol(argv[3], NULL, 10);    // Valor de N o W (dependiendo el algoritmo)
+    vector<string> aux;                 // Vector para guardar los valores del conjuto a utilizar
+    vector<int> Sol;                    // Conjunto de soluciones
 
     ifstream in(argv[1]);       // Abrimos un documento con el nombre que tenga argv[1]
     string s;                   // Variable auxiliar para guardar la variable

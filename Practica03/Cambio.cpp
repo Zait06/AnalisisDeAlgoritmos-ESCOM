@@ -7,7 +7,7 @@ void Cambio::initCambio(int nn, int *DD, int tam0){
     n=nn;
     D=DD;
     tam=tam0;
-    c=new int*[tam+1];
+    c=new int*[tam+1];          // Creación de la matríz de soluciones
     for(int i=0;i<tam+1;i++){
         c[i]=new int[n+1];
     }
@@ -48,7 +48,6 @@ int Cambio::min(int a, int b){
 
 void Cambio::cambioDinamico(){
     int i,j;
-    // Creación de la matriz de soluciones
 
     for(i=0;i<tam+1;i++)    // Primera columna con valor de cero
         c[i][0]=0;

@@ -65,14 +65,14 @@ int main(int argc, char *argv[]){
             c00.cambioDinamico();               // Se invoca al algoritmo
             c00.impMatriz();
             break;
-        case 3:
-            m00.initMochila(D,V,N,tamanio);
-            m00.mochilaVoraz();
+        case 3:                                 // Mochila fraccionaria
+            m00.initMochila(D,V,N,tamanio);     // Inicialización de la mochila
+            m00.mochilaVoraz();                 // Se invoca el algoritmo voraz
             break;
-        case 4:
-            m00.initMochila(D,V,N,tamanio);
-            m00.mochilaDinamica();
-            m00.impMatriz();
+        case 4:                                 // Mochila entera
+            m00.initMochila(D,V,N,tamanio);     // Inicialización de la mochila
+            m00.mochilaDinamica();              // Se invoca la programción dinámica
+            m00.impMatriz();                    // Impresión de la mátriz de solución
             break;
         default:
             cout<<"Opción no existente"<<endl;

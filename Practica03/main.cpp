@@ -1,3 +1,7 @@
+/*
+    Autor: Ángel Zait Hernández López
+    Github: Zait06
+*/
 #include <algorithm>
 #include "Mochila.h"
 #include <iostream>

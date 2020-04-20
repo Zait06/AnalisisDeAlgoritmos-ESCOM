@@ -1,3 +1,3 @@
-Asignatura: Analisis de Algrotimos
+# Analisis de Algrotimos
 
 Profesora: Miriam Pescador Rojas

@@ -1,8 +1,18 @@
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+#ifndef LISTA_H_
+#define LISTA_H_
 
 typedef struct Matriz{  // Estructura Matriz
-    char nombre[2];     // Nombre de la matriz (A0, A1, ... An)
+    string nombre;     // Nombre de la matriz (A0, A1, ... An)
     int numFilas;       // Numero de filas de la matriz
     int numColumas;     // Numero de columnas de la matriz
 }Matriz;
@@ -26,3 +36,9 @@ Nodo *CrearNodo(Matriz m);
 void addLista(Lista *l, Matriz m);
 Matriz removeIndexFront(Lista *l,int index);    // Eliminar un elemento de la lista
 void exploreLista(Lista *l);
+
+#endif
+
+#if defined(__cplusplus)
+}
+#endif

@@ -71,7 +71,9 @@ void exploreLista(Lista *l){
         cout<<"Lista vacia"<<endl;
     else{
         while(aux!=NULL){
-            cout<<aux->matriz.nombre<<" ";
+            cout<<aux->matriz.nombre<<": ("<<flush;
+            cout<<aux->matriz.numFilas<<","<<flush;
+            cout<<aux->matriz.numColumas<<")"<<endl;
             aux=aux->sig;
         }
         cout<<endl;

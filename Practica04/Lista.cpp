@@ -30,42 +30,61 @@ Nodo *CrearNodo(Matriz m){
     return ptrnuevo; 
 }
 
-void addLista(Lista *l, Matriz m){
+void addFrontLista(Lista *l, Matriz m){
     Nodo *nuevo=CrearNodo(m);
     if(isEmpty(l)){
         l->inicio=nuevo;
         l->final=nuevo;
+        l->tam++;
     }else{
         nuevo->sig=l->inicio;
         l->inicio->ant=nuevo;
         l->inicio=nuevo;
+        l->tam++;
     }
 }
 
-Matriz removeIndexFront(Lista *l,int index){
+Matriz removeMatrix(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
-    int i=l->tam;
-    
-    if(index==0){
-        mret=aux->matriz;
-        l->inicio=aux->sig;
-    }else if(index==l->tam-1){
-        mret=l->final->matriz;
-        l->final=l->final->ant;
-    }else{
-        for(i=0;i<=index;i++){
-            aux=aux->sig;
+    while(aux!=NULL){
+        if(aux->matriz.nombre.compare(m.nombre)==0){
+            mret=aux->matriz;
+            if(l->inicio==aux){
+                l->inicio=aux->sig;
+                l->inicio->ant=NULL;
+            }else if(l->final==aux){
+                l->final=aux->ant;
+                l->final->sig=NULL;
+            }else{
+                aux->ant->sig=aux->sig;
+                aux->sig->ant=aux->ant;
+            }
+            l->tam--;
+            break;
         }
-        mret=aux->matriz;
-        aux->ant->sig=aux->sig;
-        aux->sig->ant=aux->ant;
+        aux=aux->sig;
     }
     free(aux);
     return mret;
 }
 
-void exploreLista(Lista *l){
+Matriz searchSameRow(Lista *l, int col){
+    Nodo *aux=l->inicio;
+    while(aux->matriz.numFilas!=col){
+        aux=aux->sig;
+    }
+    return aux->matriz;
+}
+
+int isMatrixEquals(Matriz A, Matriz B){
+    if(A.numColumas==B.numFilas)
+        return 1;
+    else
+        return 0;
+}
+
+void printLista(Lista *l){
     Nodo *aux=l->inicio;
     if(isEmpty(l))
         cout<<"Lista vacia"<<endl;

@@ -28,6 +28,8 @@ int main(int argc, char *argv[]){
             cout<<"\tAlgoritmo voraz"<<endl;
             matvor.initVoraz();
             matvor.imprimirLista();
+            matvor.algoritmoVoraz();
+            matvor.imprimirLista();
             matvor.~MatrizVoraz();
         break;
         case 2:

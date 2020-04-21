@@ -11,6 +11,8 @@ using namespace std;
 MatrizVoraz::MatrizVoraz(int numMatrix,int matrixInit[][2]){
     numMatrices=numMatrix;
     aux.reserve(numMatrix);
+    numB=0;
+    numOperaciones=0;
     string naux;
     for(int i=0;i<numMatrix;i++){
         naux='A'+to_string(i);
@@ -41,7 +43,7 @@ void MatrizVoraz::hacerListaColumnas(){
     int i;
     sort(aux.begin(),aux.begin()+numMatrices,funcionOrdenColumnas);
     for(i=0;i<numMatrices;i++)
-        addLista(lista00,aux[i]);
+        addFrontLista(lista00,aux[i]);
 }
 
 bool funcionOrdenFilas(Matriz A,Matriz B) {
@@ -52,12 +54,27 @@ void MatrizVoraz::hacerListaFilas(){
     int i;
     sort(aux.begin(),aux.begin()+numMatrices,funcionOrdenFilas);
     for(i=0;i<numMatrices;i++)
-        addLista(lista01,aux[i]);
+        addFrontLista(lista01,aux[i]);
+}
+
+void MatrizVoraz::algoritmoVoraz(){
+    Matriz matA, matB;
+    matA=lista00->final->matriz;
+    matB=searchSameRow(lista01,matA.numColumas);
+    if(isMatrixEquals(matA,matB)){
+        cout<<"Matrices a unir: "<<matA.nombre<<flush;
+        cout<<" y "<<matB.nombre<<endl;
+        numOperaciones+=(matA.numFilas*matA.numColumas*matB.numFilas);
+        numB++;
+        removeMatrix(lista00,matA); removeMatrix(lista01,matA);
+        removeMatrix(lista00,matB); removeMatrix(lista01,matB);
+
+    }
 }
 
 void MatrizVoraz::imprimirLista(){
     cout<<"Ordenado por numero de columnas (mayor a menor)"<<endl;
-    exploreLista(lista00);
+    printLista(lista00);
     cout<<"Ordenado por numero de filas (mayor a menor)"<<endl;
-    exploreLista(lista01);
+    printLista(lista01);
 }

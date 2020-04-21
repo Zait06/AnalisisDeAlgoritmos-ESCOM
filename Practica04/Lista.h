@@ -33,9 +33,11 @@ void initLista(Lista *l);
 void destroyLista(Lista *l);
 int isEmpty(Lista *l);
 Nodo *CrearNodo(Matriz m);
-void addLista(Lista *l, Matriz m);
-Matriz removeIndexFront(Lista *l,int index);    // Eliminar un elemento de la lista
-void exploreLista(Lista *l);
+void addFrontLista(Lista *l, Matriz m);
+Matriz removeMatrix(Lista *l, Matriz m);
+Matriz searchSameRow(Lista *l, int col);
+int isMatrixEquals(Matriz A, Matriz B);
+void printLista(Lista *l);
 
 #endif
 

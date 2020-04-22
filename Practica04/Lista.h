@@ -12,7 +12,7 @@ extern "C" {
 #define LISTA_H_
 
 typedef struct Matriz{  // Estructura Matriz
-    string nombre;     // Nombre de la matriz (A0, A1, ... An)
+    string nombre;      // Nombre de la matriz (A0, A1, ... An)
     int numFilas;       // Numero de filas de la matriz
     int numColumas;     // Numero de columnas de la matriz
 }Matriz;

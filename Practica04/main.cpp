@@ -1,3 +1,8 @@
+/*
+    Author: Hernandez Lopez Angel Zait
+    Github: Zait06
+*/
+
 #include "MatrizVoraz.h"
 #include <iostream>
 #include <stdlib.h>

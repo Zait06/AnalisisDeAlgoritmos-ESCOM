@@ -12,10 +12,10 @@ extern "C" {
 #define LISTA_H_
 
 typedef struct Matriz{  // Estructura Matriz
-    char cID;      // Nombre de la matriz (A0, A1, ... An)
-    int nID;
+    char cID;           // Nombre de la matriz (A,B,C,...)
+    int nID;            // Numero de la matriz (1,2,3,...)
     int numFilas;       // Numero de filas de la matriz
-    int numColumas;     // Numero de columnas de la matriz
+    int numColumnas;    // Numero de columnas de la matriz
 }Matriz;
 
 typedef struct Nodo{    // Estructura Nodo que contiene
@@ -38,11 +38,13 @@ Nodo *CrearNodo(Matriz m);
 void addFrontLista(Lista *l, Matriz m);
 void addBackLista(Lista *l, Matriz m);
 Matriz removeMatrix(Lista *l, Matriz m);
-Matriz searchSameRow(Lista *l, int fil);
-int isMatrixEquals(Matriz A, Matriz B);
+Matriz searchSameRowOrColum(Lista *l, Matriz m);
+int canMultiMatrix(Matriz A, Matriz B);
+int calculateNumOp(Matriz A, Matriz B);
 Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID);
 void stepBackBackLista(Lista *l);
 void printLista(Lista *l);
+void printMatrix(Matriz m);
 
 #endif
 

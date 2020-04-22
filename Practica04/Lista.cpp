@@ -11,7 +11,7 @@ void destroyLista(Lista *l){
 }
 
 int isEmpty(Lista *l){
-    if(l->inicio==NULL && l->final==NULL && l->tam==0)
+    if(l->inicio==NULL && l->final==NULL)
         return 1;
     else
         return 0;
@@ -85,32 +85,45 @@ Matriz removeMatrix(Lista *l, Matriz m){
     return mret;
 }
 
-Matriz searchSameRow(Lista *l, int fil){
+Matriz searchSameRowOrColum(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
+    Matriz mret;
+    cout<<"\nBuscando matriz"<<endl;
     while(aux!=NULL){
-        cout<<aux->matriz.numColumas<<" ";
-        if(aux->matriz.numColumas==fil){
-            cout<<"\nEncontrado"<<endl;
+        mret=aux->matriz;
+        if(mret.numColumnas==m.numFilas || mret.numFilas==m.numColumnas)
             break;
-        }
         aux=aux->sig;
     }
-    return aux->matriz;
+    return mret;
 }
 
-int isMatrixEquals(Matriz A, Matriz B){
-    if(A.numFilas==B.numColumas)
+int canMultiMatrix(Matriz A, Matriz B){
+    if(A.numFilas==B.numColumnas || A.numColumnas==B.numFilas)
         return 1;
     else
         return 0;
+}
+
+int calculateNumOp(Matriz A, Matriz B){
+    if(A.numColumnas==B.numFilas)
+        return (A.numFilas*A.numColumnas*B.numColumnas);
+    else
+        return (B.numFilas*B.numColumnas*A.numColumnas);
 }
 
 Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID){
     Matriz mret;
     mret.cID=ccID;
     mret.nID=nnID;
-    mret.numFilas=A.numFilas;
-    mret.numColumas=B.numColumas;
+    if(A.numColumnas==B.numFilas){
+        mret.numFilas=A.numFilas;
+        mret.numColumnas=B.numColumnas;
+    }
+    else{
+        mret.numFilas=B.numFilas;
+        mret.numColumnas=A.numColumnas;
+    }
     return mret;
 }
 
@@ -127,12 +140,15 @@ void printLista(Lista *l){
         cout<<"Lista vacia"<<endl;
     else{
         while(aux!=NULL){
-            cout<<aux->matriz.cID<<flush;
-            cout<<aux->matriz.nID<<": ("<<flush;
-            cout<<aux->matriz.numFilas<<","<<flush;
-            cout<<aux->matriz.numColumas<<")"<<endl;
+            printMatrix(aux->matriz);
             aux=aux->sig;
         }
-        cout<<endl;
     }
+}
+
+void printMatrix(Matriz m){
+    cout<<m.cID<<flush;
+    cout<<m.nID<<": ("<<flush;
+    cout<<m.numFilas<<","<<flush;
+    cout<<m.numColumnas<<")"<<endl;
 }

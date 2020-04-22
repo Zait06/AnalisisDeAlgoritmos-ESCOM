@@ -9,7 +9,7 @@ MatrizVoraz::MatrizVoraz(int numMatrix,int matrixInit[][2]){
         aux[i].cID='A';
         aux[i].nID=i+1;
         aux[i].numFilas=matrixInit[i][0];
-        aux[i].numColumas=matrixInit[i][1];
+        aux[i].numColumnas=matrixInit[i][1];
     }
 }
 
@@ -27,7 +27,7 @@ void MatrizVoraz::initVoraz(){
 }
 
 bool funcionOrdenColumnas(Matriz A,Matriz B) {
-    return (A.numColumas<B.numColumas);
+    return (A.numColumnas<B.numColumnas);
 }
 
 void MatrizVoraz::hacerListaColumnas(){
@@ -51,27 +51,30 @@ void MatrizVoraz::hacerListaFilas(){
 void MatrizVoraz::algoritmoVoraz(){
     Matriz matA, matB;
     int i=0;
-    while(i==0){
+    while(isEmpty(lista01)==0){
+        imprimirLista();
         matA=lista00->final->matriz;
-        matB=searchSameRow(lista01,matA.numFilas);
-        if(isMatrixEquals(matA,matB)){
-            cout<<"Matrices a unir: "<<matA.cID<<matA.nID<<flush;
+        cout<<endl;
+        printMatrix(matA);
+        matB=searchSameRowOrColum(lista01,matA);
+        printMatrix(matB);
+        if(canMultiMatrix(matA,matB)){
+            cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
             cout<<" y "<<matB.cID<<matB.nID<<endl;
-            numOperaciones+=(matB.numFilas*matB.numColumas*matA.numColumas);
+            numOperaciones+=calculateNumOp(matA,matB);
             numB++;
             removeMatrix(lista00,matA); removeMatrix(lista01,matA);
             removeMatrix(lista00,matB); removeMatrix(lista01,matB);
-            addBackLista(lista00,createMatrix(matB,matA,'B',numB));
-            imprimirLista();
-            i=isEmpty(lista01);
+            addBackLista(lista00,createMatrix(matA,matB,'B',numB));
         }else{
+            cout<<"\nRecorriendo puntero"<<endl;
             stepBackBackLista(lista00);
         }
     }
 }
 
 void MatrizVoraz::imprimirLista(){
-    cout<<"Ordenado por numero de columnas (mayor a menor)"<<endl;
+    cout<<"\nOrdenado por numero de columnas (mayor a menor)"<<endl;
     printLista(lista00);
     cout<<"Ordenado por numero de filas (mayor a menor)"<<endl;
     printLista(lista01);

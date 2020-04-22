@@ -36,9 +36,10 @@ Nodo *CrearNodo(Matriz m);
 void addFrontLista(Lista *l, Matriz m);
 void addBackLista(Lista *l, Matriz m);
 Matriz removeMatrix(Lista *l, Matriz m);
-Matriz searchSameRow(Lista *l, int col);
+Matriz searchSameRow(Lista *l, int fil);
 int isMatrixEquals(Matriz A, Matriz B);
 Matriz createMatrix(Matriz A, Matriz B, string name);
+void stepBackBackLista(Lista *l);
 void printLista(Lista *l);
 
 #endif

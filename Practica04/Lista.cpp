@@ -78,16 +78,21 @@ Matriz removeMatrix(Lista *l, Matriz m){
     return mret;
 }
 
-Matriz searchSameRow(Lista *l, int col){
+Matriz searchSameRow(Lista *l, int fil){
     Nodo *aux=l->inicio;
-    while(aux->matriz.numFilas!=col){
+    while(aux!=NULL){
+        cout<<aux->matriz.numColumas<<" ";
+        if(aux->matriz.numColumas==fil){
+            cout<<"\nEncontrado"<<endl;
+            break;
+        }
         aux=aux->sig;
     }
     return aux->matriz;
 }
 
 int isMatrixEquals(Matriz A, Matriz B){
-    if(A.numColumas==B.numFilas)
+    if(A.numFilas==B.numColumas)
         return 1;
     else
         return 0;
@@ -99,6 +104,13 @@ Matriz createMatrix(Matriz A, Matriz B, string name){
     mret.numFilas=A.numFilas;
     mret.numColumas=B.numColumas;
     return mret;
+}
+
+void stepBackBackLista(Lista *l){
+    if(isEmpty(l))
+        cout<<"Lista vacia"<<endl;
+    else
+        l->final=l->final->ant;
 }
 
 void printLista(Lista *l){

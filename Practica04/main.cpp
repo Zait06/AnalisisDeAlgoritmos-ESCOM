@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 
     cout<<"Ingrese los valores de las matrices Ai (n m):"<<endl;
     for(i=0;i<numMat;i++){
-        cout<<"A"<<i<<": "<<flush;
+        cout<<"A"<<i+1<<": "<<flush;
         cin>>matrices[i][0]>>matrices[i][1];
     }
 
@@ -32,9 +32,7 @@ int main(int argc, char *argv[]){
         case 1:
             cout<<"\tAlgoritmo voraz"<<endl;
             matvor.initVoraz();
-            matvor.imprimirLista();
             matvor.algoritmoVoraz();
-            matvor.imprimirLista();
             matvor.~MatrizVoraz();
         break;
         case 2:

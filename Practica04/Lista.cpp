@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-using namespace std;
 #include "Lista.h"
 
 void initLista(Lista *l){   // Inicialización de las variables
@@ -44,6 +40,19 @@ void addFrontLista(Lista *l, Matriz m){
     }
 }
 
+void addBackLista(Lista *l, Matriz m){
+    Nodo *nuevo=CrearNodo(m);
+    if(isEmpty(l)){
+        l->inicio=nuevo;
+        l->final=nuevo;
+    }else{
+        nuevo->ant=l->final;
+        l->final->sig=nuevo;
+        l->final=nuevo;
+    }
+    l->tam++;
+}
+
 Matriz removeMatrix(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
@@ -82,6 +91,14 @@ int isMatrixEquals(Matriz A, Matriz B){
         return 1;
     else
         return 0;
+}
+
+Matriz createMatrix(Matriz A, Matriz B, string name){
+    Matriz mret;
+    mret.nombre=name;
+    mret.numFilas=A.numFilas;
+    mret.numColumas=B.numColumas;
+    return mret;
 }
 
 void printLista(Lista *l){

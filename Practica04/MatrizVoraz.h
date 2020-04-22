@@ -1,6 +1,10 @@
+#include <string>
 #include <vector>
 #include "Lista.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 #ifndef MATRIZVORAZ_H_

@@ -1,12 +1,4 @@
-#include <string>
-#include "Lista.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm>
 #include "MatrizVoraz.h"
-using namespace std;
-
 
 MatrizVoraz::MatrizVoraz(int numMatrix,int matrixInit[][2]){
     numMatrices=numMatrix;
@@ -58,17 +50,19 @@ void MatrizVoraz::hacerListaFilas(){
 }
 
 void MatrizVoraz::algoritmoVoraz(){
-    Matriz matA, matB;
+    Matriz matA, matB, newMat;
+    string nameB;
     matA=lista00->final->matriz;
     matB=searchSameRow(lista01,matA.numColumas);
     if(isMatrixEquals(matA,matB)){
         cout<<"Matrices a unir: "<<matA.nombre<<flush;
         cout<<" y "<<matB.nombre<<endl;
         numOperaciones+=(matA.numFilas*matA.numColumas*matB.numFilas);
-        numB++;
+        if(numB==0)
+            numB++;
         removeMatrix(lista00,matA); removeMatrix(lista01,matA);
         removeMatrix(lista00,matB); removeMatrix(lista01,matB);
-
+        addBackLista(lista00,createMatrix(matA,matB,("B"+to_string(numB))));
     }
 }
 

@@ -12,7 +12,8 @@ extern "C" {
 #define LISTA_H_
 
 typedef struct Matriz{  // Estructura Matriz
-    string nombre;      // Nombre de la matriz (A0, A1, ... An)
+    char cID;      // Nombre de la matriz (A0, A1, ... An)
+    int nID;
     int numFilas;       // Numero de filas de la matriz
     int numColumas;     // Numero de columnas de la matriz
 }Matriz;
@@ -32,13 +33,14 @@ typedef struct Lista{   // Estructura Lista
 void initLista(Lista *l);
 void destroyLista(Lista *l);
 int isEmpty(Lista *l);
+int isSameName(Matriz A, Matriz B);
 Nodo *CrearNodo(Matriz m);
 void addFrontLista(Lista *l, Matriz m);
 void addBackLista(Lista *l, Matriz m);
 Matriz removeMatrix(Lista *l, Matriz m);
 Matriz searchSameRow(Lista *l, int fil);
 int isMatrixEquals(Matriz A, Matriz B);
-Matriz createMatrix(Matriz A, Matriz B, string name);
+Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID);
 void stepBackBackLista(Lista *l);
 void printLista(Lista *l);
 

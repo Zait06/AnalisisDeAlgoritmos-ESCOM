@@ -5,10 +5,9 @@ MatrizVoraz::MatrizVoraz(int numMatrix,int matrixInit[][2]){
     aux.reserve(numMatrix);
     numB=0;
     numOperaciones=0;
-    string naux;
     for(int i=0;i<numMatrix;i++){
-        naux="A"+to_string(i+1);
-        aux[i].nombre=naux;
+        aux[i].cID='A';
+        aux[i].nID=i+1;
         aux[i].numFilas=matrixInit[i][0];
         aux[i].numColumas=matrixInit[i][1];
     }
@@ -52,23 +51,22 @@ void MatrizVoraz::hacerListaFilas(){
 void MatrizVoraz::algoritmoVoraz(){
     Matriz matA, matB;
     int i=0;
-
-    while(i<2){
-        imprimirLista();
+    while(i==0){
         matA=lista00->final->matriz;
         matB=searchSameRow(lista01,matA.numFilas);
         if(isMatrixEquals(matA,matB)){
-            cout<<"Matrices a unir: "<<matA.nombre<<flush;
-            cout<<" y "<<matB.nombre<<endl;
+            cout<<"Matrices a unir: "<<matA.cID<<matA.nID<<flush;
+            cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=(matB.numFilas*matB.numColumas*matA.numColumas);
             numB++;
             removeMatrix(lista00,matA); removeMatrix(lista01,matA);
             removeMatrix(lista00,matB); removeMatrix(lista01,matB);
-            addBackLista(lista00,createMatrix(matB,matA,("B"+to_string(numB))));
+            addBackLista(lista00,createMatrix(matB,matA,'B',numB));
+            imprimirLista();
+            i=isEmpty(lista01);
         }else{
             stepBackBackLista(lista00);
         }
-        i++;
     }
 }
 

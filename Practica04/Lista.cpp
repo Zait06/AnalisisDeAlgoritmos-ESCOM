@@ -11,7 +11,14 @@ void destroyLista(Lista *l){
 }
 
 int isEmpty(Lista *l){
-    if(l->inicio==NULL and l->final==NULL)
+    if(l->inicio==NULL && l->final==NULL && l->tam==0)
+        return 1;
+    else
+        return 0;
+}
+
+int isSameName(Matriz A, Matriz B){
+    if(A.cID==B.cID && A.nID==B.nID)
         return 1;
     else
         return 0;
@@ -57,7 +64,7 @@ Matriz removeMatrix(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
     while(aux!=NULL){
-        if(aux->matriz.nombre.compare(m.nombre)==0){
+        if(isSameName(aux->matriz,m)){
             mret=aux->matriz;
             if(l->inicio==aux){
                 l->inicio=aux->sig;
@@ -98,9 +105,10 @@ int isMatrixEquals(Matriz A, Matriz B){
         return 0;
 }
 
-Matriz createMatrix(Matriz A, Matriz B, string name){
+Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID){
     Matriz mret;
-    mret.nombre=name;
+    mret.cID=ccID;
+    mret.nID=nnID;
     mret.numFilas=A.numFilas;
     mret.numColumas=B.numColumas;
     return mret;
@@ -119,7 +127,8 @@ void printLista(Lista *l){
         cout<<"Lista vacia"<<endl;
     else{
         while(aux!=NULL){
-            cout<<aux->matriz.nombre<<": ("<<flush;
+            cout<<aux->matriz.cID<<flush;
+            cout<<aux->matriz.nID<<": ("<<flush;
             cout<<aux->matriz.numFilas<<","<<flush;
             cout<<aux->matriz.numColumas<<")"<<endl;
             aux=aux->sig;

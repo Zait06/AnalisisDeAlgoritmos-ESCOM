@@ -3,11 +3,8 @@
     Github: Zait06
 */
 
+#include "MatrizDinamica.h"
 #include "MatrizVoraz.h"
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-using namespace std;
 
 int main(int argc, char *argv[]){
     if(argc!=3){
@@ -15,8 +12,8 @@ int main(int argc, char *argv[]){
         exit(0);
     }
     
-    int numMat=strtol(argv[1], NULL, 10);   // Numero de matrices
-    int opc=strtol(argv[2], NULL, 10);      // Numero de matrices
+    int numMat=atoi(argv[1]);   // Numero de matrices
+    int opc=atoi(argv[2]);      // Numero de matrices
     int matrices[numMat][2];                // Dimensiones de las matrices
     int i;                                  // Contador
 
@@ -27,16 +24,24 @@ int main(int argc, char *argv[]){
     }
 
     MatrizVoraz matvor(numMat,matrices);
+    MatrizDinamica matdim(numMat);
 
     switch(opc){
         case 1:
             cout<<"\tAlgoritmo voraz"<<endl;
+            matdim.~MatrizDinamica();
             matvor.initVoraz();
             matvor.algoritmoVoraz();
             matvor.~MatrizVoraz();
         break;
         case 2:
+            cout<<"\tProgramacion dinamica"<<endl;
             matvor.~MatrizVoraz();
+            matdim.initDinamica(matrices);
+            matdim.algoritmoDinamico();
+            matdim.printMatS();
+            matdim.~MatrizDinamica();
+        break;
         default:
             cout<<"Opcion incorrecta"<<endl;
         break;

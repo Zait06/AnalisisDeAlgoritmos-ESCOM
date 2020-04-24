@@ -10,18 +10,18 @@ void destroyLista(Lista *l){
     free(l);
 }
 
-int isEmpty(Lista *l){
+bool isEmpty(Lista *l){
     if(l->inicio==NULL && l->final==NULL)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }
 
-int isSameName(Matriz A, Matriz B){
+bool isSameName(Matriz A, Matriz B){
     if(A.cID==B.cID && A.nID==B.nID)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }
 
 Nodo *CrearNodo(Matriz m){
@@ -38,13 +38,13 @@ void addFrontLista(Lista *l, Matriz m){
     if(isEmpty(l)){
         l->inicio=nuevo;
         l->final=nuevo;
-        l->tam++;
+        l->posicion=nuevo;
     }else{
         nuevo->sig=l->inicio;
         l->inicio->ant=nuevo;
         l->inicio=nuevo;
-        l->tam++;
     }
+    l->tam++;
 }
 
 void addBackLista(Lista *l, Matriz m){
@@ -58,6 +58,7 @@ void addBackLista(Lista *l, Matriz m){
         l->final=nuevo;
     }
     l->tam++;
+    l->posicion=nuevo;
 }
 
 Matriz removeMatrix(Lista *l, Matriz m){
@@ -85,31 +86,27 @@ Matriz removeMatrix(Lista *l, Matriz m){
     return mret;
 }
 
-Matriz searchSameRowOrColum(Lista *l, Matriz m){
+Matriz searchSameRow(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
-    cout<<"\nBuscando matriz"<<endl;
     while(aux!=NULL){
         mret=aux->matriz;
-        if(mret.numColumnas==m.numFilas || mret.numFilas==m.numColumnas)
+        if(mret.numColumnas==m.numFilas)
             break;
         aux=aux->sig;
     }
     return mret;
 }
 
-int canMultiMatrix(Matriz A, Matriz B){
-    if(A.numFilas==B.numColumnas || A.numColumnas==B.numFilas)
-        return 1;
+bool canMultiMatrix(Matriz A, Matriz B){
+    if(A.numFilas==B.numColumnas)
+        return true;
     else
-        return 0;
+        return false;
 }
 
 int calculateNumOp(Matriz A, Matriz B){
-    if(A.numColumnas==B.numFilas)
-        return (A.numFilas*A.numColumnas*B.numColumnas);
-    else
-        return (B.numFilas*B.numColumnas*A.numColumnas);
+    return B.numFilas*B.numColumnas*A.numColumnas;
 }
 
 Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID){
@@ -131,7 +128,14 @@ void stepBackBackLista(Lista *l){
     if(isEmpty(l))
         cout<<"Lista vacia"<<endl;
     else
-        l->final=l->final->ant;
+        l->posicion=l->posicion->ant;
+}
+
+bool isSamePosIni(Lista *l){
+    if(l->posicion->matriz.cID==l->inicio->matriz.cID && l->posicion->matriz.nID==l->inicio->matriz.nID)
+        return true;
+    else
+        return false;
 }
 
 void printLista(Lista *l){

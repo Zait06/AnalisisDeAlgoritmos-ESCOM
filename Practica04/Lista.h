@@ -25,6 +25,7 @@ typedef struct Nodo{    // Estructura Nodo que contiene
 }Nodo;
 
 typedef struct Lista{   // Estructura Lista
+    Nodo *posicion;     // Nodo auxiliar
     Nodo *inicio;       // Apuntador al inicio de la lista
     Nodo *final;        // Apuntador al final de la lista
     int tam;            // Tamanio de la lista
@@ -32,17 +33,18 @@ typedef struct Lista{   // Estructura Lista
 
 void initLista(Lista *l);
 void destroyLista(Lista *l);
-int isEmpty(Lista *l);
-int isSameName(Matriz A, Matriz B);
+bool isEmpty(Lista *l);
+bool isSameName(Matriz A, Matriz B);
 Nodo *CrearNodo(Matriz m);
 void addFrontLista(Lista *l, Matriz m);
 void addBackLista(Lista *l, Matriz m);
 Matriz removeMatrix(Lista *l, Matriz m);
-Matriz searchSameRowOrColum(Lista *l, Matriz m);
-int canMultiMatrix(Matriz A, Matriz B);
+Matriz searchSameRow(Lista *l, Matriz m);
+bool canMultiMatrix(Matriz A, Matriz B);
 int calculateNumOp(Matriz A, Matriz B);
 Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID);
 void stepBackBackLista(Lista *l);
+bool isSamePosIni(Lista *l);
 void printLista(Lista *l);
 void printMatrix(Matriz m);
 

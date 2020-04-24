@@ -51,13 +51,9 @@ void MatrizVoraz::hacerListaFilas(){
 void MatrizVoraz::algoritmoVoraz(){
     Matriz matA, matB;
     int i=0;
-    while(isEmpty(lista01)==0){
-        imprimirLista();
-        matA=lista00->final->matriz;
-        cout<<endl;
-        printMatrix(matA);
-        matB=searchSameRowOrColum(lista01,matA);
-        printMatrix(matB);
+    while(isEmpty(lista01)==false){
+        matA=lista00->posicion->matriz;
+        matB=searchSameRow(lista01,matA);
         if(canMultiMatrix(matA,matB)){
             cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
             cout<<" y "<<matB.cID<<matB.nID<<endl;
@@ -67,8 +63,10 @@ void MatrizVoraz::algoritmoVoraz(){
             removeMatrix(lista00,matB); removeMatrix(lista01,matB);
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));
         }else{
-            cout<<"\nRecorriendo puntero"<<endl;
-            stepBackBackLista(lista00);
+            if(isSamePosIni(lista00))
+                break;
+            else
+                stepBackBackLista(lista00);
         }
     }
 }
@@ -78,4 +76,5 @@ void MatrizVoraz::imprimirLista(){
     printLista(lista00);
     cout<<"Ordenado por numero de filas (mayor a menor)"<<endl;
     printLista(lista01);
+    cout<<endl;
 }

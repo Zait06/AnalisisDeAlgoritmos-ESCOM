@@ -32,6 +32,7 @@ int main(int argc, char *argv[]){
             matdim.~MatrizDinamica();
             matvor.initVoraz();
             matvor.algoritmoVoraz();
+            matvor.imprimirLista();
             matvor.~MatrizVoraz();
         break;
         case 2:
@@ -43,6 +44,8 @@ int main(int argc, char *argv[]){
             matdim.~MatrizDinamica();
         break;
         default:
+            matvor.~MatrizVoraz();
+            matdim.~MatrizDinamica();
             cout<<"Opcion incorrecta"<<endl;
         break;
     }

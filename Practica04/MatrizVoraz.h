@@ -19,9 +19,9 @@ class MatrizVoraz{
         int numB;                                       // Nuevo nombre de la matriz
         int numOperaciones;
     public:
-        MatrizVoraz(int numMatrix, int matrixInit[][2]);
+        MatrizVoraz(int numMatrix);
         ~MatrizVoraz();
-        void initVoraz();
+        void initVoraz(int matrixInit[][2]);
         void hacerListaColumnas();
         void hacerListaFilas();
         void algoritmoVoraz();

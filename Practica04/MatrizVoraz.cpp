@@ -1,16 +1,10 @@
 #include "MatrizVoraz.h"
 
-MatrizVoraz::MatrizVoraz(int numMatrix,int matrixInit[][2]){
+MatrizVoraz::MatrizVoraz(int numMatrix){
     numMatrices=numMatrix;
     aux.reserve(numMatrix);
     numB=0;
     numOperaciones=0;
-    for(int i=0;i<numMatrix;i++){
-        aux[i].cID='A';
-        aux[i].nID=i+1;
-        aux[i].numFilas=matrixInit[i][0];
-        aux[i].numColumnas=matrixInit[i][1];
-    }
 }
 
 MatrizVoraz::~MatrizVoraz(){
@@ -19,7 +13,13 @@ MatrizVoraz::~MatrizVoraz(){
     aux.~vector();
 }
 
-void MatrizVoraz::initVoraz(){
+void MatrizVoraz::initVoraz(int matrixInit[][2]){
+    for(int i=0;i<numMatrices;i++){
+        aux[i].cID='A';
+        aux[i].nID=i+1;
+        aux[i].numFilas=matrixInit[i][0];
+        aux[i].numColumnas=matrixInit[i][1];
+    }
     initLista(lista00);
     initLista(lista01);
     hacerListaColumnas();
@@ -49,12 +49,13 @@ void MatrizVoraz::hacerListaFilas(){
 }
 
 void MatrizVoraz::algoritmoVoraz(){
-    Matriz matA, matB;
-    int i=0;
-    while(isEmpty(lista01)==false){
+    Matriz matA, matB;  // Representan las matrices Aj y Ak respectivamente
+    
+    while(!isEmpty(lista01)){
+        imprimirLista();
         matA=lista00->posicion->matriz;
         matB=searchSameRow(lista01,matA);
-        if(canMultiMatrix(matA,matB)){
+        if(canMultiMatrixBA(matA,matB)){
             cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
             cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=calculateNumOp(matA,matB);
@@ -62,12 +63,34 @@ void MatrizVoraz::algoritmoVoraz(){
             removeMatrix(lista00,matA); removeMatrix(lista01,matA);
             removeMatrix(lista00,matB); removeMatrix(lista01,matB);
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));
+            sortListaByColumn(lista00);
         }else{
             if(isSamePosIni(lista00))
                 break;
-            else
+            else{
+                cout<<"\nRecorriendo puntero"<<endl;
                 stepBackBackLista(lista00);
+            }
         }
+    }
+
+    imprimirLista();
+
+    while(!isEmpty(lista00)){
+        matA=lista00->final->matriz;
+        printMatrix(matA);
+        getchar();
+        matB=searchSameRowOrColumm(lista00,matA);
+        if(canMultiMatrix(matA,matB)){
+            cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
+            cout<<" y "<<matB.cID<<matB.nID<<endl;
+            numOperaciones+=calculateNumOp(matA,matB);
+            numB++;
+            removeMatrix(lista00,matA); removeMatrix(lista00,matB);
+            addBackLista(lista00,createMatrix(matA,matB,'B',numB));
+        }
+        if(lista00->tam==1)
+            break;
     }
 }
 

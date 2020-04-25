@@ -61,6 +61,24 @@ void addBackLista(Lista *l, Matriz m){
     l->posicion=nuevo;
 }
 
+void sortListaByColumn(Lista *l){
+    Nodo *aux=l->final;
+    while (aux->ant!=NULL){
+        if(aux->ant->matriz.numColumnas<aux->matriz.numColumnas){
+            aux->ant->sig=aux->sig;
+            aux->ant=aux->ant->ant;
+            aux->sig=aux->ant->sig;
+            aux->sig->ant=aux;
+            aux->ant->sig=aux;
+            if(aux==l->final){
+                l->final=aux->sig;
+            }
+            
+        }else
+            break;       
+    }
+}
+
 Matriz removeMatrix(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
@@ -98,15 +116,37 @@ Matriz searchSameRow(Lista *l, Matriz m){
     return mret;
 }
 
-bool canMultiMatrix(Matriz A, Matriz B){
+Matriz searchSameRowOrColumm(Lista *l, Matriz m){
+    Nodo *aux=l->final->ant;
+    Matriz mret;
+    while(aux!=NULL){
+        mret=aux->matriz;
+        if(mret.numColumnas==m.numFilas || m.numColumnas==mret.numFilas)
+            break;
+        aux=aux->sig;
+    }
+    return mret;
+}
+
+bool canMultiMatrixBA(Matriz A, Matriz B){
     if(A.numFilas==B.numColumnas)
         return true;
     else
         return false;
 }
 
+bool canMultiMatrix(Matriz A, Matriz B){
+    if(canMultiMatrixBA(A,B) || canMultiMatrixBA(B,A))
+        return true;
+    else
+        return false;
+}
+
 int calculateNumOp(Matriz A, Matriz B){
-    return B.numFilas*B.numColumnas*A.numColumnas;
+    if(canMultiMatrixBA(A,B))
+        return B.numFilas*B.numColumnas*A.numColumnas;
+    if(canMultiMatrixBA(B,A))
+        return A.numFilas*A.numColumnas*B.numColumnas;
 }
 
 Matriz createMatrix(Matriz A, Matriz B, char ccID, int nnID){

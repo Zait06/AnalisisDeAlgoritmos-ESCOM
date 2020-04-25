@@ -50,47 +50,49 @@ void MatrizVoraz::hacerListaFilas(){
 
 void MatrizVoraz::algoritmoVoraz(){
     Matriz matA, matB;  // Representan las matrices Aj y Ak respectivamente
-    
+
     while(!isEmpty(lista01)){
-        imprimirLista();
         matA=lista00->posicion->matriz;
         matB=searchSameRow(lista01,matA);
         if(canMultiMatrixBA(matA,matB)){
-            cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
-            cout<<" y "<<matB.cID<<matB.nID<<endl;
+            // cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
+            // cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=calculateNumOp(matA,matB);
             numB++;
-            removeMatrix(lista00,matA); removeMatrix(lista01,matA);
-            removeMatrix(lista00,matB); removeMatrix(lista01,matB);
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));
             sortListaByColumn(lista00);
+            removeMatrix(lista00,matA); removeMatrix(lista01,matA);
+            removeMatrix(lista00,matB); removeMatrix(lista01,matB);
         }else{
             if(isSamePosIni(lista00))
                 break;
             else{
-                cout<<"\nRecorriendo puntero"<<endl;
+                // cout<<"\nRecorriendo puntero"<<endl;
                 stepBackBackLista(lista00);
             }
         }
     }
 
-    imprimirLista();
+    // cout<<"\nSolo lista00"<<endl;
+    // imprimirLista();
 
-    while(!isEmpty(lista00)){
+    while(lista00->tam>1){
         matA=lista00->final->matriz;
-        printMatrix(matA);
-        getchar();
         matB=searchSameRowOrColumm(lista00,matA);
         if(canMultiMatrix(matA,matB)){
             cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
             cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=calculateNumOp(matA,matB);
             numB++;
-            removeMatrix(lista00,matA); removeMatrix(lista00,matB);
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));
+            sortListaByColumn(lista00);
+            removeMatrix(lista00,matA); removeMatrix(lista00,matB);
+            if(matA.cID=='A')
+                removeMatrix(lista01,matA);
+            if(matB.cID=='A')
+                removeMatrix(lista01,matB);
+            imprimirLista();
         }
-        if(lista00->tam==1)
-            break;
     }
 }
 
@@ -100,4 +102,8 @@ void MatrizVoraz::imprimirLista(){
     cout<<"Ordenado por numero de filas (mayor a menor)"<<endl;
     printLista(lista01);
     cout<<endl;
+}
+
+int MatrizVoraz::obtenerNumOperaciones(){
+    return numOperaciones;
 }

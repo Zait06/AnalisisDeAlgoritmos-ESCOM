@@ -31,8 +31,9 @@ int main(int argc, char *argv[]){
             cout<<"\tAlgoritmo voraz"<<endl;
             matdim.~MatrizDinamica();
             matvor.initVoraz(matrices);
-            matvor.algoritmoVoraz();
             matvor.imprimirLista();
+            matvor.algoritmoVoraz();
+            cout<<"\nEl numero de operaciones es: "<<matvor.obtenerNumOperaciones()<<endl;
             matvor.~MatrizVoraz();
         break;
         case 2:
@@ -50,7 +51,7 @@ int main(int argc, char *argv[]){
         break;
     }
 
-    cout<<"Fin del programa"<<endl;
+    cout<<"\nFin del programa"<<endl;
     
     return 0;
 }

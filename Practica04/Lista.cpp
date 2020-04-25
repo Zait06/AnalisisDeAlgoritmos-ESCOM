@@ -82,23 +82,29 @@ void sortListaByColumn(Lista *l){
 Matriz removeMatrix(Lista *l, Matriz m){
     Nodo *aux=l->inicio;
     Matriz mret;
-    while(aux!=NULL){
-        if(isSameName(aux->matriz,m)){
-            mret=aux->matriz;
-            if(l->inicio==aux){
-                l->inicio=aux->sig;
-                l->inicio->ant=NULL;
-            }else if(l->final==aux){
-                l->final=aux->ant;
-                l->final->sig=NULL;
-            }else{
-                aux->ant->sig=aux->sig;
-                aux->sig->ant=aux->ant;
+    if(l->tam==1){
+        initLista(l);
+        l->tam--;
+        mret=aux->matriz;
+    }else{
+        while(aux!=NULL){
+            if(isSameName(aux->matriz,m)){
+                mret=aux->matriz;
+                if(l->inicio==aux){
+                    l->inicio=aux->sig;
+                    l->inicio->ant=NULL;
+                }else if(l->final==aux){
+                    l->final=aux->ant;
+                    l->final->sig=NULL;
+                }else{
+                    aux->ant->sig=aux->sig;
+                    aux->sig->ant=aux->ant;
+                }
+                l->tam--;
+                break;
             }
-            l->tam--;
-            break;
+            aux=aux->sig;
         }
-        aux=aux->sig;
     }
     free(aux);
     return mret;
@@ -181,7 +187,7 @@ bool isSamePosIni(Lista *l){
 void printLista(Lista *l){
     Nodo *aux=l->inicio;
     if(isEmpty(l))
-        cout<<"Lista vacia"<<endl;
+        cout<<"\tLista vacia"<<endl;
     else{
         while(aux!=NULL){
             printMatrix(aux->matriz);

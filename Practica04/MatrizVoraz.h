@@ -26,6 +26,7 @@ class MatrizVoraz{
         void hacerListaFilas();
         void algoritmoVoraz();
         void imprimirLista();
+        int obtenerNumOperaciones();
 };
 
 #endif

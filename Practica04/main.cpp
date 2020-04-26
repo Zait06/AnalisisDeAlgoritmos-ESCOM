@@ -20,6 +20,8 @@ int* mySplit(string linea){
 int main(int argc, char *argv[]){
     if(argc!=3){
         cout<<"Forma de uso: "<<argv[0]<<" opcion_algoritmo conjunto0i.txt"<<endl;
+        cout<<"[1] Numero de operaciones a realizar con algoritmo voraz."<<endl;
+        cout<<"[2] Numero de operaciones a realizar con programacion dinamica."<<endl;
         exit(0);
     }
     

@@ -13,11 +13,7 @@ MatrizDinamica::MatrizDinamica(int numMat){
     }
 }
 
-MatrizDinamica::~MatrizDinamica(){
-    delete p;   free(p);
-    delete M;   free(M);
-    delete S;   free(S);
-}
+MatrizDinamica::~MatrizDinamica(){}
 
 void MatrizDinamica::initDinamica(int matz[][2]){
     int i,j;
@@ -63,17 +59,17 @@ void MatrizDinamica::printMatM(){
     }
 }
 
-void printOP(int **ss,int ii, int jj){
+int MatrizDinamica::obtenerNumOperaciones(){
+    return M[0][numMatrices-1];
+}
+
+void MatrizDinamica::printOptimalParens(int ii, int jj){
     if(ii==jj)
         cout<<" A"<<ii+1<<" ";
     else{
         cout<<"(";
-        printOP(ss,ii,ss[ii][jj]);
-        printOP(ss,ss[ii][jj]+1,jj);
+        printOptimalParens(ii,S[ii][jj]);
+        printOptimalParens(S[ii][jj]+1,jj);
         cout<<")";
     }
-}
-
-void MatrizDinamica::printOptimalParens(){
-    printOP(S,0,numMatrices-1);
 }

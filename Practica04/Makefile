@@ -9,5 +9,5 @@ Lista.o: Lista.cpp Lista.h
 	g++ Lista.cpp -c
 .PHONY: limpiar
 limpiar:
-	rm main
-	rm *.o
+	rm -rf main
+	rm -rf *.o

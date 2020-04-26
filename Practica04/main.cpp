@@ -5,22 +5,43 @@
 
 #include "MatrizDinamica.h"
 #include "MatrizVoraz.h"
+#include <fstream>
+#include <string>
+
+int* mySplit(string linea){
+    int *a=new int[2];                      // Arreglo donde se guardarán los valores
+    int tam=linea.length();                 // Obtención del tamaño de la cadena
+    int pos=linea.find(" ");                // Posición donde se encuentra el espacio en la cadena
+    a[0]=stoi(linea.substr(0,pos));         // Primer valor entero para el conjunto
+    a[1]=stoi(linea.substr(pos+1,tam-1));   // Segundo valor entero para el conjunto
+    return a;
+}
 
 int main(int argc, char *argv[]){
     if(argc!=3){
-        cout<<"Forma de uso: "<<argv[0]<<" numero_de_matrices opcion_algoritmo"<<endl;
+        cout<<"Forma de uso: "<<argv[0]<<" opcion_algoritmo conjunto0i.txt"<<endl;
         exit(0);
     }
     
-    int numMat=atoi(argv[1]);   // Numero de matrices
-    int opc=atoi(argv[2]);      // Numero de matrices
+    int numMat;                 // Numero de matrices
+    int opc=atoi(argv[1]);      // Numero de matrices
     int matrices[numMat][2];    // Dimensiones de las matrices
-    int i;                      // Contador
+    int *maux=new int[2];
 
-    cout<<"Ingrese los valores de las matrices Ai (n m):"<<endl;
-    for(i=0;i<numMat;i++){
-        cout<<"A"<<i+1<<": "<<flush;
-        cin>>matrices[i][0]>>matrices[i][1];
+    ifstream in(argv[2]);       // Abrimos un documento con el nombre que tenga argv[1]
+    string s;                   // Variable auxiliar para guardar la variable
+    /*
+        Se lee el documento linea por linea. Dicha linea se guarda en la variable
+        's', y este se guarda en un vector para poder pasarlo a un arreglo de
+        tipo entero.
+    */
+    numMat=0;
+    while(getline(in,s)){
+        cout<<"A"<<numMat+1<<": "<<s<<endl;
+        maux=mySplit(s);
+        matrices[numMat][0]=maux[0];
+        matrices[numMat][1]=maux[1];
+        numMat++;
     }
 
     MatrizVoraz matvor(numMat);
@@ -41,8 +62,9 @@ int main(int argc, char *argv[]){
             matvor.~MatrizVoraz();
             matdim.initDinamica(matrices);
             matdim.algoritmoDinamico();
-            matdim.printOptimalParens();
-            cout<<endl;
+            matdim.printOptimalParens(0,numMat-1);
+            cout<<"\n\nEl numero de operaciones es: "<<matdim.obtenerNumOperaciones()<<endl;
+            matdim.~MatrizDinamica();
         break;
         default:
             matvor.~MatrizVoraz();

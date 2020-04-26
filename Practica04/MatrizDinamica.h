@@ -19,7 +19,8 @@ class MatrizDinamica{
         void algoritmoDinamico();
         void printMatS();
         void printMatM();
-        void printOptimalParens();
+        int obtenerNumOperaciones();
+        void printOptimalParens(int, int);
 };
 
 #endif

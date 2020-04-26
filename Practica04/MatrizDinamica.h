@@ -18,6 +18,8 @@ class MatrizDinamica{
         void initDinamica(int matz[][2]);
         void algoritmoDinamico();
         void printMatS();
+        void printMatM();
+        void printOptimalParens();
 };
 
 #endif

@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
 
     switch(opc){
         case 1:
-            cout<<"\tAlgoritmo voraz"<<endl;
+            cout<<"\n\tAlgoritmo voraz"<<endl;
             matdim.~MatrizDinamica();
             matvor.initVoraz(matrices);
             matvor.imprimirLista();
@@ -37,12 +37,12 @@ int main(int argc, char *argv[]){
             matvor.~MatrizVoraz();
         break;
         case 2:
-            cout<<"\tProgramacion dinamica\n"<<endl;
+            cout<<"\n\tProgramacion dinamica\n"<<endl;
             matvor.~MatrizVoraz();
             matdim.initDinamica(matrices);
             matdim.algoritmoDinamico();
-            matdim.printMatS();
-            matdim.~MatrizDinamica();
+            matdim.printOptimalParens();
+            cout<<endl;
         break;
         default:
             matvor.~MatrizVoraz();

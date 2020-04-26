@@ -84,7 +84,6 @@ Matriz removeMatrix(Lista *l, Matriz m){
     Matriz mret;
     if(l->tam==1){
         initLista(l);
-        l->tam--;
         mret=aux->matriz;
     }else{
         while(aux!=NULL){
@@ -100,13 +99,13 @@ Matriz removeMatrix(Lista *l, Matriz m){
                     aux->ant->sig=aux->sig;
                     aux->sig->ant=aux->ant;
                 }
-                l->tam--;
                 break;
             }
             aux=aux->sig;
         }
     }
     free(aux);
+    l->tam--;
     return mret;
 }
 

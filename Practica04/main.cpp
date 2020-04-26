@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
             matvor.~MatrizVoraz();
         break;
         case 2:
-            cout<<"\tProgramacion dinamica"<<endl;
+            cout<<"\tProgramacion dinamica\n"<<endl;
             matvor.~MatrizVoraz();
             matdim.initDinamica(matrices);
             matdim.algoritmoDinamico();

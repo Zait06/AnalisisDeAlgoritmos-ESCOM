@@ -33,7 +33,7 @@ void MatrizDinamica::algoritmoDinamico(){
     for(l=2;l<numMatrices;l++){
         for(i=1;i<numMatrices-l+1;i++){
             j=i+l-1;
-            M[i][j]=1234;
+            M[i][j]=pow(2,30);
             for(k=i;k<j-1;k++){
                 q=M[i][k]+M[k+1][j]+(p[i-1]*p[k]*p[j]);
                 if(q<M[i][j]){

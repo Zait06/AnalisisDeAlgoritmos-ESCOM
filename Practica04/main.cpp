@@ -46,6 +46,8 @@ int main(int argc, char *argv[]){
         numMat++;
     }
 
+    in.close();
+
     MatrizVoraz matvor(numMat);
     MatrizDinamica matdim(numMat);
 

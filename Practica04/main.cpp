@@ -56,7 +56,6 @@ int main(int argc, char *argv[]){
             cout<<"\n\tAlgoritmo voraz"<<endl;
             matdim.~MatrizDinamica();
             matvor.initVoraz(matrices);
-            matvor.imprimirLista();
             matvor.algoritmoVoraz();
             cout<<"\nEl numero de operaciones es: "<<matvor.obtenerNumOperaciones()<<endl;
             matvor.~MatrizVoraz();

@@ -55,8 +55,8 @@ void MatrizVoraz::algoritmoVoraz(){
         matA=lista00->posicion->matriz;
         matB=searchSameRow(lista01,matA);
         if(canMultiMatrixBA(matA,matB)){
-            // cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
-            // cout<<" y "<<matB.cID<<matB.nID<<endl;
+            cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
+            cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=calculateNumOp(matA,matB);
             numB++;
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));
@@ -82,8 +82,8 @@ void MatrizVoraz::algoritmoVoraz(){
         if(canMultiMatrix(matA,matB)){
             removeMatrix(lista00,matA);
             removeMatrix(lista00,matB);
-            // cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
-            // cout<<" y "<<matB.cID<<matB.nID<<endl;
+            cout<<"\nMatrices a unir: "<<matA.cID<<matA.nID<<flush;
+            cout<<" y "<<matB.cID<<matB.nID<<endl;
             numOperaciones+=calculateNumOp(matA,matB);
             numB++;
             addBackLista(lista00,createMatrix(matA,matB,'B',numB));

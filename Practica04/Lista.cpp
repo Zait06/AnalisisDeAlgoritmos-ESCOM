@@ -72,6 +72,8 @@ void sortListaByColumn(Lista *l){
             aux->ant->sig=aux;
             if(aux==l->final){
                 l->final=aux->sig;
+            }else{
+                aux->sig->sig->ant=aux->sig;
             }
             
         }else

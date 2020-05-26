@@ -3,7 +3,10 @@ Para poder compilar esta practica pueden ser de dos maneras.
         make
        para que pueda compilarlo, si no
     2. Abrir la terminal dentro del folder de la practica y escribir
-        g++ Lista.cpp MatrizVoraz.cpp MatrizDinamica.cpp -o main
+        g++ Lista.cpp -c
+        g++ MatrizVoraz.cpp -c
+        g++ MatrizDinamica.cpp -c
+        g++ main.cpp MatrizDinamica.o MatrizVoraz.o Lista.o -o main
     
 Una vez compilado el programa, podemos ejecutarlo en la terminal de la siguiente forma:
     ./main opcion_algoritmo conjunto0i.txt      (Linux)

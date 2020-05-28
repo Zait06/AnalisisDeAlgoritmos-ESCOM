@@ -9,12 +9,12 @@ int main(int argc, char *argv[]){
     }
     
     int a,b;
-    string s;                   // Variable auxiliar para guardar la variable
+    string s;                   // Variable auxiliar para guardar la linea de texto
     char *aa, *bb;              // Apuntadores a las cadenas a analizar
     ifstream in(argv[1]);       // Abrimos un documento con el nombre que tenga argv[1]                 
     /*
-        Se lee el documento linea por linea. Dicha linea se guarda en la variable
-        's'.
+        Se lee el documento linea por linea. 
+        Dicha linea se guarda en la variable 's'.
     */
     getline(in,s);              // Se lee la primera linea
     a=s.size();                 // Se toma el tamaño de la primera cadena
@@ -34,8 +34,9 @@ int main(int argc, char *argv[]){
     in.close();                 // Se cierra el documento
 
     LCS lcs00(aa,bb,a,b);       // Se crea un objeto de la clase LCS
-    lcs00.runAlgorithm();       // Genera el algoritmo
+    lcs00.runAlgorithm();       // Corre el algoritmo
     lcs00.printTableLength();   // Imprime la tabla de valores 
+    printf("\nPorcentaje de coincidencia: %2.4f %",lcs00.percentCoincidence());
 
     return 0;
 }

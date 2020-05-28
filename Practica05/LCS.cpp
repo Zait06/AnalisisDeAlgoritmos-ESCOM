@@ -34,7 +34,6 @@ LCS::~LCS(){};
 */
 void LCS::runAlgorithm(){
     int i, j;
-
     for(i=1;i<m;i++){
         for(j=1;j<n;j++){
             if(X[i-1]==Y[j-1]){
@@ -68,4 +67,8 @@ void LCS::printTableLength(){
         }
         printf("\n");
     }
+}
+
+float LCS::percentCoincidence(){
+    return (float(c[m-1][n-1])*100.0)/float(m);
 }

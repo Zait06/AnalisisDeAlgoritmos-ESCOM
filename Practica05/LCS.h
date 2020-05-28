@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -12,13 +12,15 @@ class LCS{
         char *X, *Y;        // Cadenas X y Y a analizar
         char **b;           // Matriz de movimientos de coincidencia
         int **c;            // Matriz de tamaño de la cadena
-        int m, n;           // Numero de filas y columnas respectivamente
+        long m, n;          // Numero de filas y columnas respectivamente
     public:
-        LCS(char *A, char *B, int lenA, int lenB);  // Contructor
-        ~LCS();                                     // Destructor
-        void runAlgorithm();                        // Algoritmo
-        void printTableLength();                    // Impresión de la tabla
-        float percentCoincidence();                 // Devuleve el porcentaje de coincidencia
+        LCS(string A, string B);    // Contructor
+        ~LCS();                     // Destructor
+        void runAlgorithm();        // Algoritmo
+        void printTableLength();    // Impresión de la tabla
+        void printTableArrow();
+        float percentCoincidence(); // Devuleve el porcentaje de coincidencia
+        void printLCS(long i, long j);
 };
 
 #endif

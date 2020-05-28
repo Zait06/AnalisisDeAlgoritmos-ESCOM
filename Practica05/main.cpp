@@ -8,35 +8,32 @@ int main(int argc, char *argv[]){
         exit(0);
     }
     
-    int a,b;
-    string s;                   // Variable auxiliar para guardar la linea de texto
-    char *aa, *bb;              // Apuntadores a las cadenas a analizar
+    string s[3];                // Variable auxiliar para guardar la linea de texto
     ifstream in(argv[1]);       // Abrimos un documento con el nombre que tenga argv[1]                 
     /*
         Se lee el documento linea por linea. 
         Dicha linea se guarda en la variable 's'.
     */
-    getline(in,s);              // Se lee la primera linea
-    a=s.size();                 // Se toma el tamaño de la primera cadena
-    aa=new char[a];             // Se crea un arreglo dinámico char de tamanio a
-    strcpy(aa,s.c_str());       // Se copia la primera cadena en el arreglo
-    cout<<aa<<endl;
+    getline(in,s[0]);           // Se lee la primera linea
+    // cout<<s[0]<<endl;
 
-    getline(in,s);              // Lectura de linea vacia
-    cout<<endl;
+    getline(in,s[1]);           // Lectura de linea vacia
+    // cout<<endl;
 
-    getline(in,s);              // Se lee la tercera linea
-    b=s.size();                 // Se toma el tamaño de la segunda cadena
-    bb=new char[b];             // Se crea un arreglo dinámico char de tamanio b
-    strcpy(bb,s.c_str());       // Se copia la segunda cadena en el arreglo
-    cout<<bb<<endl;
+    getline(in,s[2]);           // Se lee la tercera linea
+    // cout<<s[2]<<endl;
 
     in.close();                 // Se cierra el documento
+    // cout<<endl;
 
-    LCS lcs00(aa,bb,a,b);       // Se crea un objeto de la clase LCS
+    LCS lcs00(s[0],s[2]);       // Se crea un objeto de la clase LCS
     lcs00.runAlgorithm();       // Corre el algoritmo
-    lcs00.printTableLength();   // Imprime la tabla de valores 
-    printf("\nPorcentaje de coincidencia: %2.4f %",lcs00.percentCoincidence());
+    // lcs00.printTableLength();   // Imprime la tabla de valores 
+    // lcs00.printTableArrow();    // Imprime la tabla de movimientos
+    printf("Porcentaje de coincidencia: %2.4f %c \n",lcs00.percentCoincidence(),'%');
+    cout<<"Subsecuencia: \n\t";
+    lcs00.printLCS(s[0].size(),s[2].size());
+    cout<<"\n\nPrograma terminado"<<endl;
 
     return 0;
 }

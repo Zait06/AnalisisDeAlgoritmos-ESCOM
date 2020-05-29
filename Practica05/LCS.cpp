@@ -1,5 +1,6 @@
 #include "LCS.h"
 #include <string.h>
+#include <fstream>
 
 LCS::LCS(string A, string B){
     m = A.size()+1;         // Tamanio de la cadena X
@@ -118,4 +119,23 @@ void LCS::printLCS(long i, long j){
     }else{
         printLCS(i,j-1);
     }
+}
+
+void LCS::saveData(){
+    ofstream fs("Resultado00.csv"); 
+    fs<<",,";
+    for(long k=0;k<n-1;k++)
+        fs<<Y[k]<<",";
+    fs<<endl;
+    for(long i=0;i<m;i++){
+        if(i>0)
+            fs<<X[i-1]<<",";
+        else
+            fs<<",";
+        for(long j=0;j<n;j++){
+            fs<<c[i][j]<<",";
+        }
+        fs<<endl;
+    }
+    fs.close();
 }

@@ -33,6 +33,7 @@ int main(int argc, char *argv[]){
     printf("Porcentaje de coincidencia: %2.4f %c \n",lcs00.percentCoincidence(),'%');
     cout<<"Subsecuencia: \n\t";
     lcs00.printLCS(s[0].size(),s[2].size());
+    lcs00.saveData();
     cout<<"\n\nPrograma terminado"<<endl;
 
     return 0;

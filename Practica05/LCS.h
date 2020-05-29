@@ -17,10 +17,11 @@ class LCS{
         LCS(string A, string B);    // Contructor
         ~LCS();                     // Destructor
         void runAlgorithm();        // Algoritmo
+        void saveData();            // Guardadod e los datos
         void printTableLength();    // Impresión de la tabla
         void printTableArrow();
         float percentCoincidence(); // Devuleve el porcentaje de coincidencia
-        void printLCS(long i, long j);
+        void printLCS(long i, long j);  // Impresion de la secuencia
 };
 
 #endif

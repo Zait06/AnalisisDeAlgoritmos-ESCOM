@@ -113,7 +113,8 @@ void LCS::printLCS(long i, long j){
     }
     if(b[i][j]=='d'){
         printLCS(i-1,j-1);
-        cout<<X[i-1]<<" "<<flush;
+        Z.push_back(X[i-1]);    // Se agrega al final de la cadena el caracter
+        // cout<<X[i-1]<<" "<<flush;
     }else if(b[i][j]=='u'){
         printLCS(i-1,j);
     }else{
@@ -121,8 +122,14 @@ void LCS::printLCS(long i, long j){
     }
 }
 
-void LCS::saveData(){
-    ofstream fs("Resultado00.csv"); 
+/*
+    Para mejor comodidad al visualizar los datos, se recomienda que la
+    extensión del archivo sea CSV, es un archivo separado por comas
+    el cual se puede visualizar en hojas de calculo, como son Excel
+    o LibreOffice.
+*/
+void LCS::saveData(char *name){
+    ofstream fs(name); 
     fs<<",,";
     for(long k=0;k<n-1;k++)
         fs<<Y[k]<<",";
@@ -137,5 +144,11 @@ void LCS::saveData(){
         }
         fs<<endl;
     }
+    fs<<endl;
+    printLCS(m-1,n-1);
+    fs<<"Subsecuencia,";
+    fs<<Z;
+    fs<<endl<<endl;
+    fs<<"Porcentaje de coincidencia,"<<percentCoincidence()<<"%"<<endl;
     fs.close();
 }

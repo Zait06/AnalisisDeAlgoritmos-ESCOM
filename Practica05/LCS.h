@@ -10,17 +10,18 @@ using namespace std;
 class LCS{
     private:
         char *X, *Y;        // Cadenas X y Y a analizar
+        string Z;           // Subsecuencia resultante
         char **b;           // Matriz de movimientos de coincidencia
         int **c;            // Matriz de tamaño de la cadena
         long m, n;          // Numero de filas y columnas respectivamente
     public:
-        LCS(string A, string B);    // Contructor
-        ~LCS();                     // Destructor
-        void runAlgorithm();        // Algoritmo
-        void saveData();            // Guardadod e los datos
-        void printTableLength();    // Impresión de la tabla
-        void printTableArrow();
-        float percentCoincidence(); // Devuleve el porcentaje de coincidencia
+        LCS(string A, string B);        // Contructor
+        ~LCS();                         // Destructor
+        void runAlgorithm();            // Algoritmo
+        void saveData(char *name);      // Guardado de los datos
+        void printTableLength();        // Impresion de la tabla de valores
+        void printTableArrow();         // Impresion de la tabla de movimientos
+        float percentCoincidence();     // Devuleve el porcentaje de coincidencia
         void printLCS(long i, long j);  // Impresion de la secuencia
 };
 

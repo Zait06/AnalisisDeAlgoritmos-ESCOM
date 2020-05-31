@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]){
     if(argc!=3){
-        cout<<"Forma de uso: "<<argv[0]<<" archivo_analizar.txt archivo_resultado.cvs"<<endl;
+        cout<<"Forma de uso: "<<argv[0]<<" archivo_analizar.txt archivo_resultado.csv"<<endl;
         exit(0);
     }
     

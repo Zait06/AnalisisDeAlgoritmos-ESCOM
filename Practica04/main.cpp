@@ -67,6 +67,9 @@ int main(int argc, char *argv[]){
             matdim.algoritmoDinamico();
             matdim.printOptimalParens(0,numMat-1);
             cout<<"\n\nEl numero de operaciones es: "<<matdim.obtenerNumOperaciones()<<endl;
+            cout<<endl;
+            matdim.printMatS();
+            matdim.printMatM();
             matdim.~MatrizDinamica();
         break;
         default:

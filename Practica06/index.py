@@ -29,10 +29,19 @@ class HuffmanCode(Huffman):
     def imageRead(self,nameFile):
         print("Leyendo Imagen")
 
-    def createList(self):
+    def __createList(self):
         for dato in self.frequence.keys():
             self.add(Node(dato,self.frequence[dato]))
         # self.showData()
+
+    def __createTree(self):
+        while self.tam > 1:
+            self.remove_add()
+        self.showTree(0,self.Front)
+
+    def makeHuffman(self):
+        self.__createList()
+        self.__createTree()
 
 if __name__ == "__main__":
     hfc = HuffmanCode()
@@ -46,7 +55,7 @@ if __name__ == "__main__":
                 hfc.textRead(name)
         else:
             hfc.imageRead(name)
-        hfc.createList()
+        hfc.makeHuffman()
     except:
         print('Error en el programa')
     

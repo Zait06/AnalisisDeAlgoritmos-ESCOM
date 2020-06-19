@@ -12,6 +12,7 @@ class Huffman:
         self.Back = None
         self.tam = 0
         self.stringTree = str()
+        self.union = 0
 
     def isEmpty(self):
         if self.Front == None and self.Back == None:
@@ -58,7 +59,8 @@ class Huffman:
         else:
             no1 = self.remove()
             no2 = self.remove()
-            hybNode = Node('*',(no1.freq+no2.freq))
+            self.union +=1
+            hybNode = Node('u'+str(self.union),(no1.freq+no2.freq))
             hybNode.izq,hybNode.der = no1,no2
             self.add(hybNode)
 
@@ -75,10 +77,9 @@ class Huffman:
             imprime += '\n'
             for i in range(0,level):
                 imprime += '\t'
-            imprime += str(rootTree.data)
+            imprime += '('+str(rootTree.data)+','+str(rootTree.freq)+')'
             print(imprime)
             self.showTree(level+1,rootTree.izq)
-
 
     def printInorden(self,rootTree):
         if rootTree != None:
@@ -87,7 +88,7 @@ class Huffman:
             self.printInorden(rootTree.der);
 
 # if __name__ == "__main__":
-#     hf = Hoffman()
+#     hf = Huffman()
 
 #     hf.add(Node('A',20))
 #     hf.add(Node('B',15))
@@ -105,6 +106,9 @@ class Huffman:
 
 #     hf.showData()
 #     print('Tamanio: {}\n'.format(hf.tam))
+
+#     print(hf.Front,hf.Front.data)
+#     print(hf.Back,hf.Back.data)
 
 #     hf.printInorden(hf.Front)
 #     print(hf.stringTree)

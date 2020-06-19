@@ -87,6 +87,7 @@ class Huffman:
             self.stringTree += str(rootTree.data)
             self.printInorden(rootTree.der);
 
+
 # if __name__ == "__main__":
 #     hf = Huffman()
 

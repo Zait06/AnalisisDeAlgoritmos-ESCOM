@@ -1,19 +1,20 @@
-from Huffman import *
-from sys import argv
-import numpy as np
+import copy
 import json
 import pickle
+import bitstring
+import numpy as np
 from array import *
+from sys import argv
+from Huffman import *
 
 class HuffmanCode(Huffman):
     def __init__(self):
         Huffman.__init__(self)
         self.nameFile = str()
         self.ADN_letters = ['A','C','G','T']     # Letras de ADN
-        self.strCode = np.zeros(256)
-        self.strCode = self.strCode.astype(int)
+        self.strCode = np.zeros(256,dtype=np.int32)
         self.frequence = dict()
-        self.__code = dict()        
+        self.__code00 = dict()
 
     def adnRead(self,nameFile):
         print("Leyendo ADN")
@@ -51,17 +52,17 @@ class HuffmanCode(Huffman):
     def __encode(self,rootTree,n):
         if (rootTree.izq == None) and (rootTree.der == None):
             strFin = str()
-            #if self.strCode[0] == 0:
-            #    strFin = '1'
+            if self.strCode[0] == 0:
+                strFin = '1'
             for bit in range(0,n):
                 strFin += str(self.strCode[bit])
+            self.__code00[rootTree.data] = copy.copy(strFin)
             print("Codigo de {}: {}".format(rootTree.data,strFin))
-            self.__code[rootTree.data] = strFin
         else:
             self.strCode[n] = 0
             n += 1
             self.__encode(rootTree.izq,n)
-            self.strCode[n-1] = '1'
+            self.strCode[n-1] = 1
             self.__encode(rootTree.der,n)
 
     def makeHuffman(self):
@@ -73,22 +74,21 @@ class HuffmanCode(Huffman):
         nameJSON = self.nameFile.split('.')
         nameJSON = nameJSON[0]+'.json'
         with open(nameJSON,'w') as file:
-            json.dump(self.__code,file,indent=2)
+            json.dump(self.__code00,file,indent=2)
         
         print('\nCabezera guardada en '+nameJSON)
 
     def __makeCompress(self):
         newName = self.nameFile.split('.')
         newName = newName[0]+'_compress.txt'
-        bin_arr = array('B')
-        #asdf = ''
+        outf = open(newName,'wb')
+        bitsave = bitstring.BitArray(bin='0')
         with open(self.nameFile,'r') as file:
             for line in file.readlines():
                 for caracter in line:
-                    bin_arr.append(int(self.__code[caracter],2))
-        #print(asdf)
-        outf = open(newName,'wb')
-        bin_arr.tofile(outf)
+                    bits = self.__code00[caracter]
+                    bitsave = bitstring.BitArray(bin=bits)
+                    bitsave.tofile(outf)
         outf.close()
         print("Compresion en "+newName)
 
@@ -127,15 +127,3 @@ if __name__ == "__main__":
         decompressFunction(hfc)
     else:
         print("Error, algun parametro es incorrecto")
-
-    
-    # hf.add(Node('A',20))
-    # hf.add(Node('B',15))
-    # hf.add(Node('C',25))
-    # hf.add(Node('D',88))
-    # hf.add(Node('F',33))
-    # hf.add(Node('E',31))
-    # hf.add(Node('G',8))
-
-    # hf.showData()
-    # print('\nTamanio: {}'.format(hf.tam))
